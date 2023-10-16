@@ -2,13 +2,13 @@
 
 
 
-char *cmdArray[] = {"echo", "welcome", "\\"};
+char *cmdArray[] = {"echo", "help", "\\", "ver", "start", "createprocess"};
 
 bool cmdChecker(ziv *pointer){
     bool foundCommand = false;
     int cmdSize = sizeof(cmdArray)/sizeof(cmdArray[0]);
     if(!pointer->cmds) return false;
-    pointer->cmds = toLowerCase(pointer->cmds);
+    toLowerCase(pointer->cmds);
     for(int i = 0; i < cmdSize; i++){
         if(strcmp(pointer->cmds, cmdArray[i]) == 0){
             cmdExecute(i, pointer);
