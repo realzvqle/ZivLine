@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
-
 #define BUFSIZE 4096
 
 
