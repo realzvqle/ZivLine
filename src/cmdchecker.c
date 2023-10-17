@@ -18,4 +18,3 @@ bool cmdChecker(ziv *pointer){
     printf("%s is the wrong command, please type \"help\" to see a list of cmds\n", pointer->cmds);
     return false;
 }
-
