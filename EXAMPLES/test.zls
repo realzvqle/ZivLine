@@ -1,2 +1,3 @@
 echo Hello World!
-s
+pause
+start admin notepad

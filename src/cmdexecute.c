@@ -1,5 +1,7 @@
 #include "header/zivline.h"
 
+
+
 int cmdExecute(int index, ziv *pointer){
     switch(index){
         case 0:
@@ -19,8 +21,34 @@ int cmdExecute(int index, ziv *pointer){
         case 5:
             StartProcess(pointer);
             break;
+        case 6:
+            clrscr();
+            break;
+        case 7:
+            pause();
+            break;
+        case 8:
+            fileRead(pointer);
+            break;
+        case 9:
+            fileWrite(pointer);
+            break;
+        case 10:
+            fileCreate(pointer);
+            break;
+        case 11:
+            exit(0);
+            break;
+        case 12:
+            fileWriteAdvanced(pointer);
+            break;
+        case 13:
+            freader fptr;
+            fptr.fileName = pointer->args;
+            startFileReader(&fptr);
+            break;
         default:
-            printf("%s Is The Incorrect Comamnd\n", pointer->cmds);
+            printf("%s Is The Incorrect\n", pointer->cmds);
             break;
     }
     return index;

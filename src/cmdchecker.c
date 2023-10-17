@@ -2,7 +2,7 @@
 
 
 
-char *cmdArray[] = {"echo", "help", "\\", "ver", "start", "createprocess"};
+char *cmdArray[] = {"echo", "help", "\\", "ver", "start", "execute", "clr", "pause", "read", "write", "create", "exit", "zwrite", "run"};
 
 bool cmdChecker(ziv *pointer){
     bool foundCommand = false;

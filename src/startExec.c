@@ -18,7 +18,7 @@ void Start(ziv *pointer){
     char * second = strtok(NULL, "\n");
 
     if(!args || !first){
-        printf("Syntax: start *isadmin *executable *parameters\nif isadmin = \"admin\", it runs as admin\nelse if isadmin = \"user\", it runs with normal user permissions\n");
+        printf("Syntax: start *perm *executable *parameters\nif perm = \"admin\", it runs as admin\nelse if perm = \"user\", it runs with normal user permissions\n");
         return;
     }
 
@@ -35,7 +35,7 @@ void Start(ziv *pointer){
         } 
     }
     else{
-        printf("Syntax: start *isadmin *executable *parameters\nif isadmin = \"admin\", it runs as admin\nelse if isadmin = \"user\", it runs with normal user permissions\n");
+        printf("Syntax: start *perm *executable *parameters\nif perm = \"admin\", it runs as admin\nelse if perm = \"user\", it runs with normal user permissions\n");
         return;
     }
      

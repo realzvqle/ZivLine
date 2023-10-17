@@ -1,12 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
 #include <windows.h>
 #include <tchar.h>
+#include <conio.h>
 
 #define BUFSIZE 4096
 #define VER 0.1
+#define clrscr() system("cls");
 
 
 
@@ -39,3 +42,8 @@ void execute_command(const char *cmd, ziv *pointer);
 void help();
 void Start(ziv *pointer);
 void StartProcess(ziv *pointer);
+void pause();
+bool fileRead(ziv *pointer);
+bool fileWrite(ziv *pointer);
+bool fileCreate(ziv *pointer);
+bool fileWriteAdvanced(ziv *pointer);
