@@ -47,6 +47,19 @@ int cmdExecute(int index, ziv *pointer){
             fptr.fileName = pointer->args;
             startFileReader(&fptr);
             break;
+        case 14:
+            system(pointer->args);
+            break;
+        case 15:
+            moveDirectory(pointer);
+            break;
+        case 16:
+            if(!pointer->path) break;
+            printf("Current Directory Is %s\n", pointer->path);
+            break;
+        case 17:
+            listFiles(pointer);
+            break;
         default:
             printf("%s Is The Incorrect\n", pointer->cmds);
             break;

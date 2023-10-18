@@ -94,6 +94,35 @@ Syntax: run *filename
 
 Example: ``run my_script.zln``
 
+
+# SYSTEM
+Runs through cmd.
+
+Syntax: SYSTEM *command
+
+Example: ``system dir`` <- Runs dir from cmd.exe
+
+# MOVETO
+Moves The Directory To Another Directory.
+
+Syntax: moveto *path
+
+Example: ``moveto C:\Windows`` <- Moves To C:\Windows
+
+# CD
+Prints Current Directory
+
+Syntax: cd
+
+# PD
+Prints Files In The Directory.
+
+Syntax: pd *path
+
+(if you moved outside the normal directory, you can type "pd" to print that directory)
+
+Example: ``pd C:\Windows`` <- Prints All The Files In C:\Windows
+
 # EXIT
 Exits Zivline.
 

@@ -13,6 +13,10 @@ void help(){
     printf("ZWRITE: zwrite *filename, opens an editor to write into the file\n");
     printf("RUN: RUN *filename, runs zivline script file\n");
     printf("EXIT: exit, exits zivline\n");
+    printf("SYSTEM: system *command, Runs command to cmd.exe\n");
+    printf("MOVETO: moveto *path, Moves to path\n");
+    printf("CD: cd, Prints Current Directory\n");
+    printf("PD: pd *path, prints all files in path\n");
     printf("\nTo See More Information, Run The Commands Without Any Arguments\n");
 }
 
@@ -23,4 +27,6 @@ void pause(){
     printf("\n");
     return;
 }
+
+
 

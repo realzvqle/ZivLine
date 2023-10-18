@@ -8,7 +8,7 @@
 #include <conio.h>
 
 #define BUFSIZE 4096
-#define VER 0.1
+#define VER 0.2
 #define clrscr() system("cls");
 
 
@@ -27,6 +27,7 @@ typedef struct{
 typedef struct{
     char *args;
     char *cmds;
+    char *path;
 } ziv;
 
 
@@ -47,3 +48,5 @@ bool fileRead(ziv *pointer);
 bool fileWrite(ziv *pointer);
 bool fileCreate(ziv *pointer);
 bool fileWriteAdvanced(ziv *pointer);
+bool moveDirectory(ziv *pointer);
+bool listFiles(ziv *pointer);
