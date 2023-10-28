@@ -12,5 +12,6 @@ int main(int argc, char *argv[]){
         pointer.fileName = argv[1];
         startFileReader(&pointer);
     }
+    
     return 0;
 }

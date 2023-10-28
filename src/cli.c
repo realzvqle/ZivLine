@@ -11,5 +11,6 @@ bool startCLI(cli *clipointer){
         pointer.cmds, pointer.args = cmdParser(clipointer->buffer, &pointer);
         cmdChecker(&pointer);
     }
+    cleanup(&pointer);
     return true;
 }

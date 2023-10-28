@@ -31,8 +31,7 @@ typedef struct{
 } ziv;
 
 
-
-
+void cleanup(ziv *pointer);
 bool startCLI(cli *clipointer);
 bool startFileReader(freader *fpointer);
 int cmdExecute(int index, ziv *pointer);

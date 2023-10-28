@@ -14,6 +14,6 @@ bool startFileReader(freader *fpointer){
         pointer.cmds, pointer.args = cmdParser(fpointer->buffer, &pointer);
         cmdChecker(&pointer);
     }
-
+    cleanup(&pointer);
     fclose(fpointer->fp);
 }

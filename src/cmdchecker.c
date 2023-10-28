@@ -4,6 +4,9 @@
 
 char *cmdArray[] = {"echo", "help", "\\", "ver", "start", "execute", "clr", "pause", "read", "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd"};
 
+
+
+
 bool cmdChecker(ziv *pointer){
     bool foundCommand = false;
     int cmdSize = sizeof(cmdArray)/sizeof(cmdArray[0]);
@@ -18,3 +21,14 @@ bool cmdChecker(ziv *pointer){
     printf("%s is the wrong command, please type \"help\" to see a list of cmds\n", pointer->cmds);
     return false;
 }
+
+
+
+void cleanup(ziv *pointer){
+    if(!pointer->path) return;
+    else free(pointer->path);
+
+    return;
+}
+
+
