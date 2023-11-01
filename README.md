@@ -123,6 +123,47 @@ Syntax: pd *path
 
 Example: ``pd C:\Windows`` <- Prints All The Files In C:\Windows
 
+
+
+# COLOR
+Changes Font Color
+
+Syntax: color *color
+
+
+Example: ``color red`` <- changes it to red
+
+ALL POSSIBLE COLORS:
+    RED, GREEN, BLUE, GRAY, WHITE, NORMAL
+
+# BCOLOR
+Changes Background Color
+
+Syntax: bcolor *color
+
+
+Example: ``bcolor red`` <- changes background to red
+
+ALL POSSIBLE COLORS:
+    RED, GREEN, BLUE, GRAY, WHITE, NORMAL
+
+# MAKEDIR
+Makes A Directory
+
+Syntax: makedir *dir
+
+
+Example: ``makedir stuff`` <- makes a stuff directory
+
+# DELDIR
+Makes A Directory
+
+Syntax: makedir *dir
+
+
+Example: ``deldir stuff`` <- delets the directory
+
+
 # EXIT
 Exits Zivline.
 
