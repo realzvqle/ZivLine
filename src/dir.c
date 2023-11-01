@@ -2,19 +2,28 @@
 
 
 bool moveDirectory(ziv *pointer){
-
     if(!pointer->args){
-        printf("moveto: moveto *directory, Moves To that directory\n");
+        printf("moveto: moveto *directory\\, Moves To that directory\n");
         return FALSE;
     }
 
-
+    if(pointer->args[strlen(pointer->args) - 1] != '\\'){
+        printf("add a \\ in the end please\n");
+        return FALSE;
+    }
+    toLowerCase(pointer->args);
     if(!SetCurrentDirectory(pointer->args)){
         DWORD error = GetLastError();
         fprintf(stderr, "Failed Changing Directory, Error %d\n", error);
         return FALSE;
     }
+    
+    if(pointer->args[1] == ':'){
+        pointer->path = NULL;
+        goto CHANGEPATH;
+    }
 
+CHANGEPATH:
     pointer->path = (char*)malloc(strlen(pointer->args) + 1);
     strcpy(pointer->path, pointer->args);
 
