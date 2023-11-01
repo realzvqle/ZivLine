@@ -4,6 +4,10 @@
 
 
 void newMakeDirectory(ziv *pointer){
+    if(!pointer->args){
+       printf("makedir *dir - makes the directory\n");
+        return;
+    }
     char* cPath = NULL;
     if(!pointer->path) cPath = pointer->args;
     else{
@@ -23,6 +27,10 @@ void newMakeDirectory(ziv *pointer){
 }
 
 void newDeleteDirectory(ziv *pointer){
+    if(!pointer->args){
+        printf("deldir *dir - deletes the directory\n");
+        return;
+    }
     char* cPath = NULL;
     if(!pointer->path) cPath = pointer->args;
     else{

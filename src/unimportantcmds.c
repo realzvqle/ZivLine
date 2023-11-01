@@ -17,8 +17,10 @@ void help(){
     printf("MOVETO: moveto *path, Moves to path\n");
     printf("CD: cd, Prints Current Directory\n");
     printf("PD: pd *path, prints all files in path\n");
-    printf("color *color - changes color to that specifc color code\n");
-    printf("bcolor *color - changes background color to that specifc color code\n");
+    printf("COLOR: color *color - changes color to that specifc color code\n");
+    printf("BCOLOR: bcolor *color - changes background color to that specifc color code\n");
+    printf("MAKEDIR: makedir *dir - makes the directory\n");
+    printf("DELDIR: deldir *dir - deletes the directory\n");
     printf("\nTo See More Information, Run The Commands Without Any Arguments\n");
 }
 

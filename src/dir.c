@@ -62,7 +62,7 @@ START:
     WIN32_FIND_DATA fd;
     HANDLE hFind = FindFirstFile(strcat(path, "\\*"),  &fd);
     if(hFind == INVALID_HANDLE_VALUE){
-        printf("Error Opening Directory, Error Code %d", GetLastError());
+        printf("Error Opening Directory, Error Code %d\n", GetLastError());
         free(path); 
         free(temp); 
         return FALSE;
