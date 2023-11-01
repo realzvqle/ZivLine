@@ -2,7 +2,7 @@
 
 
 
-char *cmdArray[] = {"echo", "help", "\\", "ver", "start", "execute", "clr", "pause", "read", "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd"};
+char *cmdArray[] = {"echo", "help", "\\", "ver", "start", "execute", "clr", "pause", "read", "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", "makedir", "deldir"};
 
 
 
@@ -24,11 +24,6 @@ bool cmdChecker(ziv *pointer){
 
 
 
-void cleanup(ziv *pointer){
-    if(!pointer->path) return;
-    else free(pointer->path);
 
-    return;
-}
 
 

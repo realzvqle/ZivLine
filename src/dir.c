@@ -23,30 +23,68 @@ bool moveDirectory(ziv *pointer){
 }
 
 bool listFiles(ziv *pointer){
-    char* path = "";
-    int i = 0;
+    char* path = NULL;
+    char* temp = NULL;
+    int stat = 0;
     if(!pointer->path && !pointer->args){
-        printf("No Path Change, And No Arguments, Please Put A Directory Argument or Change The Path\n");
-        return FALSE;
+        TCHAR buffer[BUFSIZE];
+        DWORD length = GetCurrentDirectory(BUFSIZE, buffer);
+        path = (char*)malloc(strlen(buffer) + 1);
+        strcpy(path, buffer);
+        goto START;
     }
+    //char* path = "";
+
+    if(!pointer->args && pointer->path){
+        stat = 1;
+        temp = (char*)malloc(strlen(pointer->path) + 3);
+        strcpy(temp, pointer->path);
+        path = (char*)malloc(strlen(pointer->path) + 3);
+        strcpy(path, pointer->path);
+        strcat(path, "\\");
+        goto START;
+    }
+     
+    int i = 0;
     if(!pointer->path && pointer->args){
-        path = pointer->args;
+        path = (char*)malloc(strlen(pointer->args) + 3);
+        strcpy(path, pointer->args);
+        strcat(path, "\\");
+        stat = 1;
+        goto START;
     }
-    else{
-        path = pointer->path;
+    else {
+        path = (char*)malloc(strlen(pointer->path) + 3);
+        strcpy(path, pointer->path);
+        strcat(path, "\\");
     }
+START:
     WIN32_FIND_DATA fd;
     HANDLE hFind = FindFirstFile(strcat(path, "\\*"),  &fd);
     if(hFind == INVALID_HANDLE_VALUE){
-        perror("hFind");
+        printf("Error Opening Directory, Error Code %d", GetLastError());
+        free(path); 
+        free(temp); 
         return FALSE;
     }
     do {
         printf("%s  ", fd.cFileName);
         i++;
         if(i % 5 == 0) printf("\n");
+        if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+             printf("[%s] ", fd.cFileName);
+        }
     } while (FindNextFile(hFind, &fd) != 0);
     printf("\n");
     FindClose(hFind);
+    if(stat == 1){
+        return TRUE;
+    }
+    if(!pointer->path && !pointer->args){
+        return TRUE;
+    }
+    pointer->path = (char*)malloc(strlen(temp) + 1);
+    strcpy(pointer->path, temp);
+    free(temp);
     return TRUE;
 }

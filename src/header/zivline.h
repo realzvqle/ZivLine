@@ -6,9 +6,10 @@
 #include <windows.h>
 #include <tchar.h>
 #include <conio.h>
+#include <direct.h>
 
 #define BUFSIZE 4096
-#define VER 0.2
+#define VER 0.3
 #define clrscr() system("cls");
 
 
@@ -49,3 +50,8 @@ bool fileCreate(ziv *pointer);
 bool fileWriteAdvanced(ziv *pointer);
 bool moveDirectory(ziv *pointer);
 bool listFiles(ziv *pointer);
+void changeConsoleColor(ziv *pointer);
+void changeBackGroundConsoleColor(ziv *pointer);
+void exitCleanup(int exitCode, ziv *pointer);
+void newMakeDirectory(ziv *pointer);
+void newDeleteDirectory(ziv *pointer);

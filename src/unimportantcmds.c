@@ -17,6 +17,8 @@ void help(){
     printf("MOVETO: moveto *path, Moves to path\n");
     printf("CD: cd, Prints Current Directory\n");
     printf("PD: pd *path, prints all files in path\n");
+    printf("color *color - changes color to that specifc color code\n");
+    printf("bcolor *color - changes background color to that specifc color code\n");
     printf("\nTo See More Information, Run The Commands Without Any Arguments\n");
 }
 
@@ -27,6 +29,19 @@ void pause(){
     printf("\n");
     return;
 }
+
+void cleanup(ziv *pointer){
+    if(!pointer->path) return;
+    else free(pointer->path);
+
+    return;
+}
+
+void exitCleanup(int exitCode, ziv *pointer){
+    cleanup(pointer);
+    exit(exitCode);
+}
+
 
 
 

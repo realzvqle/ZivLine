@@ -37,7 +37,7 @@ int cmdExecute(int index, ziv *pointer){
             fileCreate(pointer);
             break;
         case 11:
-            exit(0);
+            exitCleanup(0, pointer);
             break;
         case 12:
             fileWriteAdvanced(pointer);
@@ -59,6 +59,18 @@ int cmdExecute(int index, ziv *pointer){
             break;
         case 17:
             listFiles(pointer);
+            break;
+        case 18:
+            changeConsoleColor(pointer);
+            break;
+        case 19:
+            changeBackGroundConsoleColor(pointer);
+            break;
+        case 20:
+            newMakeDirectory(pointer);
+            break;
+        case 21:
+            newDeleteDirectory(pointer);
             break;
         default:
             printf("%s Is The Incorrect\n", pointer->cmds);
