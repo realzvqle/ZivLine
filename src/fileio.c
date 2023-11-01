@@ -102,11 +102,12 @@ bool fileWriteAdvanced(ziv *pointer){
     bool loop = true;
     int line = 0;
     FILE *fp;
+    fp = fopen(path, "a");
     if(!fp){
         perror("fopen");
         return FALSE;
     }
-    fp = fopen(path, "a");
+    printf("To Exit: Type '-:quit'\n\n");
     while(loop){
         printf("%d ~ ", line);
         fgets(buffer, BUFSIZE, stdin);
@@ -119,5 +120,6 @@ bool fileWriteAdvanced(ziv *pointer){
     }
     //fprintf(fp, "%s\n", content);
     fclose(fp);
+    return TRUE;
 }
 
