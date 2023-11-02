@@ -105,6 +105,7 @@ bool fileWriteAdvanced(ziv *pointer){
     fp = fopen(path, "a");
     if(!fp){
         perror("fopen");
+        fclose(fp);
         return FALSE;
     }
     printf("To Exit: Type '-:quit'\n\n");

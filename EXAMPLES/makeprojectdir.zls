@@ -1,0 +1,16 @@
+echo Making Project
+makedir project
+makedir project/src
+makedir project/src/header
+write project/make.bat gcc src/main.c -o main.exe
+write project/src/main.c #include "header\project.h"
+write project/src/main.c       
+write project/src/main.c   
+write project/src/main.c int main(){
+write project/src/main.c       printf("Hello World!");
+write project/src/main.c       return 0;
+write project/src/main.c }
+write project/src/header/project.h #include <stdio.h>
+echo Made Project!
+pause
+exit
