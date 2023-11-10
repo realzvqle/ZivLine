@@ -56,3 +56,4 @@ void changeBackGroundConsoleColor(ziv *pointer);
 void exitCleanup(int exitCode, ziv *pointer);
 void newMakeDirectory(ziv *pointer);
 void newDeleteDirectory(ziv *pointer);
+void printDir(ziv *pointer);

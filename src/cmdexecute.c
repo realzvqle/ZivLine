@@ -54,8 +54,7 @@ int cmdExecute(int index, ziv *pointer){
             moveDirectory(pointer);
             break;
         case 16:
-            if(!pointer->path) break;
-            printf("Current Directory Is %s\n", pointer->path);
+            printDir(pointer);
             break;
         case 17:
             listFiles(pointer);
@@ -71,6 +70,9 @@ int cmdExecute(int index, ziv *pointer){
             break;
         case 21:
             newDeleteDirectory(pointer);
+            break;
+        case 22:
+            printf("(!) Message From 404oops\n\ngo fuck yourself\n");
             break;
         default:
             printf("%s Is The Incorrect\n", pointer->cmds);

@@ -1,33 +1,105 @@
 #include "header/zivline.h"
 
 
+
+void printDir(ziv *pointer){
+
+    if(!pointer->path) goto CURDIR;
+    printf("Current Directory Is %s\n", pointer->path);
+
+
+    return;
+CURDIR:
+    TCHAR buffer[BUFSIZE];
+    DWORD length = GetCurrentDirectory(BUFSIZE, buffer);
+    char* path = (char*)malloc(strlen(buffer) + 1);
+    strcpy(path, buffer);
+    printf("Current Directory Is %s\n", path);
+    free(path);
+    return;
+
+}
+
+char* getDir(){
+    char* path = NULL;
+    TCHAR buffer[BUFSIZE];
+    DWORD length = GetCurrentDirectory(BUFSIZE, buffer);
+    path = (char*)malloc(strlen(buffer) + 1);
+    strcpy(path, buffer);
+     if (path[strlen(path) - 1] != '\\') {
+        // If not, add a backslash at the end
+        strcat(path, "\\");
+    }
+
+    return path;
+
+}
+
+
+
 bool moveDirectory(ziv *pointer){
     if(!pointer->args){
         printf("moveto: moveto *directory\\, Moves To that directory\n");
         return FALSE;
     }
+    char* tempPath = NULL;
 
     if(pointer->args[strlen(pointer->args) - 1] != '\\'){
-        printf("add a \\ in the end please\n");
+        printf("missing \\ in the end\n");
         return FALSE;
     }
     toLowerCase(pointer->args);
-    if(!SetCurrentDirectory(pointer->args)){
-        DWORD error = GetLastError();
-        fprintf(stderr, "Failed Changing Directory, Error %d\n", error);
-        return FALSE;
-    }
+    // if(!SetCurrentDirectory(pointer->args)){
+    //     DWORD error = GetLastError();
+    //     fprintf(stderr, "Failed Changing Directory, Error %d\n", error);
+    //     return FALSE;
+    // }
     
     if(pointer->args[1] == ':'){
-        pointer->path = NULL;
+        if(!pointer->path) goto CHANGEPATH;
         goto CHANGEPATH;
     }
+    else{
+        goto ADDPATH;
+    }
 
+    return TRUE;
 CHANGEPATH:
-    pointer->path = (char*)malloc(strlen(pointer->args) + 1);
-    strcpy(pointer->path, pointer->args);
+    tempPath = (char*)malloc(strlen(pointer->args) + 1);
+    strcpy(tempPath, pointer->args);
 
-    printf("Sucsessfully Changed Directory To %s\n", pointer->path);
+    printf("Sucsessfully Changed Directory To %s\n", tempPath);
+    if(!pointer->path);
+    else free(pointer->path);
+    pointer->path = NULL;
+    pointer->path = (char*)malloc(strlen(tempPath) + 1);
+    strcpy(pointer->path, tempPath);
+    free(tempPath);
+
+    return TRUE;
+ADDPATH:
+    if(!pointer->path){
+        tempPath = (char*)malloc(4096 + 1);
+        strcpy(tempPath, getDir());
+    }
+    else{
+        tempPath = (char*)malloc(strlen(pointer->path) + 1);
+        strcpy(tempPath, pointer->path);
+    }
+    int totalLength = strlen(tempPath) + strlen(pointer->args) + 1;
+    char* result = (char*)malloc(totalLength);
+    strcpy(result, tempPath);
+    strcat(result, pointer->args);
+    tempPath = (char*)malloc(strlen(result) + 1);
+    strcpy(tempPath, result);
+    free(result);
+    if(!pointer->path);
+    else free(pointer->path);
+    pointer->path = NULL;
+    pointer->path = (char*)malloc(strlen(tempPath) + 1);
+    strcpy(pointer->path, tempPath);
+    free(tempPath);
+    printf("Sucsessfully Changed Directory To %s\n", result);
     return TRUE;
 }
 
