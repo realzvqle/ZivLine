@@ -72,7 +72,7 @@ int cmdExecute(int index, ziv *pointer){
             newDeleteDirectory(pointer);
             break;
         case 22:
-            printf("(!) Message From 404oops\n\ngo fuck yourself\n");
+            oops(pointer);
             break;
         default:
             printf("%s Is The Incorrect\n", pointer->cmds);

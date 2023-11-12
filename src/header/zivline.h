@@ -7,6 +7,7 @@
 #include <tchar.h>
 #include <conio.h>
 #include <direct.h>
+#include <time.h>
 
 
 #define BUFSIZE 4096
@@ -57,3 +58,4 @@ void exitCleanup(int exitCode, ziv *pointer);
 void newMakeDirectory(ziv *pointer);
 void newDeleteDirectory(ziv *pointer);
 void printDir(ziv *pointer);
+void oops(ziv *pointer);

@@ -35,6 +35,10 @@ char* getDir(){
 
 }
 
+char* currentDir(ziv *pointer){
+    return pointer->path;
+}
+
 
 
 bool moveDirectory(ziv *pointer){
@@ -56,7 +60,6 @@ bool moveDirectory(ziv *pointer){
     // }
     
     if(pointer->args[1] == ':'){
-        if(!pointer->path) goto CHANGEPATH;
         goto CHANGEPATH;
     }
     else{
@@ -68,18 +71,19 @@ CHANGEPATH:
     tempPath = (char*)malloc(strlen(pointer->args) + 1);
     strcpy(tempPath, pointer->args);
 
-    printf("Sucsessfully Changed Directory To %s\n", tempPath);
+    
     if(!pointer->path);
     else free(pointer->path);
     pointer->path = NULL;
     pointer->path = (char*)malloc(strlen(tempPath) + 1);
     strcpy(pointer->path, tempPath);
     free(tempPath);
-
+    printf("Sucsessfully Changed Directory To %s\n", pointer->path);
+    
     return TRUE;
 ADDPATH:
     if(!pointer->path){
-        tempPath = (char*)malloc(4096 + 1);
+        tempPath = (char*)malloc(strlen(getDir()) + 1);
         strcpy(tempPath, getDir());
     }
     else{
@@ -99,7 +103,7 @@ ADDPATH:
     pointer->path = (char*)malloc(strlen(tempPath) + 1);
     strcpy(pointer->path, tempPath);
     free(tempPath);
-    printf("Sucsessfully Changed Directory To %s\n", result);
+    printf("Sucsessfully Changed Directory To %s\n", pointer->path);
     return TRUE;
 }
 

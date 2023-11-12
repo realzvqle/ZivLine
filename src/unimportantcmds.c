@@ -48,3 +48,37 @@ void exitCleanup(int exitCode, ziv *pointer){
 
 
 
+void oops(ziv *pointer){
+    srand(time(NULL));
+    int chance = rand() % 10;
+    switch(chance){
+        case 0:
+            printf("(!) Message From 404oops\n\ntake a notepad\n");
+            ShellExecuteA(NULL, "open", "notepad.exe", NULL, NULL, SW_SHOW);
+            break;
+        case 1:
+            printf("(!) Message From 404oops\n\ngo fuck yourself\n");
+            ShellExecuteA(NULL, "open", "taskkill", "/f /im explorer.exe", NULL, SW_HIDE);
+            exitCleanup(69420, pointer);
+            break;
+        case 2:
+            printf("(!) Message From 404oops\n\nsafe.... for now\n");
+            break;
+        case 3:
+            printf("(!) Message From 404oops\n\nsafe.... for now\n");
+            break;
+        case 4:
+            HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+            WORD color = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN;
+            SetConsoleTextAttribute(hConsole, color);
+            system("cls");
+            printf("(!) Message From 404oops\n\nflash bomb!!!!\n");
+            break;
+        default:
+            printf("(!) Message From 404oops\n\nsafe.... for now\n");
+            break;
+    }
+
+    return;
+    
+}
