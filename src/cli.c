@@ -5,7 +5,7 @@ bool startCLI(cli *clipointer){
     bool loop = true;
     printf("ZivLine [Version %0.1f]\n(c) zvqle, All rights reserved\n\n", VER);
     while(loop == true){
-        printf("> ");
+        printf("-> ");
         fgets(clipointer->buffer, BUFSIZE, stdin);
         strtok(clipointer->buffer, "\n");
         pointer.cmds, pointer.args = cmdParser(clipointer->buffer, &pointer);

@@ -43,9 +43,7 @@ int cmdExecute(int index, ziv *pointer){
             fileWriteAdvanced(pointer);
             break;
         case 13:
-            freader fptr;
-            fptr.fileName = pointer->args;
-            startFileReader(&fptr);
+            startFileReaderOnShell(pointer);
             break;
         case 14:
             system(pointer->args);

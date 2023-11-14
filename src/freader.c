@@ -1,6 +1,8 @@
 #include "header/zivline.h"
 
 
+
+
 bool startFileReader(freader *fpointer){
     ziv pointer;
     fpointer->fp = fopen(fpointer->fileName, "r");

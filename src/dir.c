@@ -2,6 +2,15 @@
 
 
 
+
+
+bool isDirectoryValid(char* path){
+    DWORD check = GetFileAttributesA(path);
+
+    if(check == INVALID_FILE_ATTRIBUTES) return FALSE;
+    else return TRUE;
+}
+
 void printDir(ziv *pointer){
 
     if(!pointer->path) goto CURDIR;
@@ -71,6 +80,11 @@ CHANGEPATH:
     tempPath = (char*)malloc(strlen(pointer->args) + 1);
     strcpy(tempPath, pointer->args);
 
+    if(!isDirectoryValid(tempPath)){
+        printf("Directory Does Not Exist\n");
+        free(tempPath);
+        return FALSE;
+    }
     
     if(!pointer->path);
     else free(pointer->path);
@@ -97,6 +111,11 @@ ADDPATH:
     tempPath = (char*)malloc(strlen(result) + 1);
     strcpy(tempPath, result);
     free(result);
+    if(!isDirectoryValid(tempPath)){
+        printf("Directory Does Not Exist\n");
+        free(tempPath);
+        return FALSE;
+    }
     if(!pointer->path);
     else free(pointer->path);
     pointer->path = NULL;
@@ -147,18 +166,30 @@ START:
     WIN32_FIND_DATA fd;
     HANDLE hFind = FindFirstFile(strcat(path, "\\*"),  &fd);
     if(hFind == INVALID_HANDLE_VALUE){
+        if(GetLastError() == 3){
+            printf("The Directory Does Not Exist\n");
+            free(path); 
+            free(temp); 
+            return FALSE;
+        }
+        else if(GetLastError() == 5){
+            printf("Permission Is Denied\n");
+            free(path); 
+            free(temp); 
+            return FALSE;
+        }
         printf("Error Opening Directory, Error Code %d\n", GetLastError());
         free(path); 
         free(temp); 
         return FALSE;
     }
     do {
-        printf("%s  ", fd.cFileName);
-        i++;
-        if(i % 5 == 0) printf("\n");
         if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
              printf("[%s] ", fd.cFileName);
         }
+        else printf("%s  ", fd.cFileName);
+        i++;
+        if(i % 5 == 0) printf("\n");
     } while (FindNextFile(hFind, &fd) != 0);
     printf("\n");
     FindClose(hFind);

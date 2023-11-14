@@ -2,7 +2,7 @@
 
 
 
-char *cmdArray[] = {"echo", "help", "\\", "ver", "start", "execute", "clr", "pause", "read", 
+char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "pause", "read", 
 "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", 
 "makedir", "deldir", "404oops"};
 

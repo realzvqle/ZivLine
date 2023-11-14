@@ -59,3 +59,5 @@ void newMakeDirectory(ziv *pointer);
 void newDeleteDirectory(ziv *pointer);
 void printDir(ziv *pointer);
 void oops(ziv *pointer);
+char* getDir();
+bool startFileReaderOnShell(ziv *pointer);

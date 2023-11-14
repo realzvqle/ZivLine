@@ -20,7 +20,8 @@ bool fileRead(ziv *pointer){
     char buffer[BUFSIZE];
     fp = fopen(path, "r");
     if(!fp){
-        perror("fopen");
+        printf("Failed Reading File\n");
+        fclose(fp);
         return FALSE;
     }
     while(fgets(buffer, BUFSIZE, fp)){
@@ -47,8 +48,9 @@ bool fileCreate(ziv *pointer){
     FILE *fp;
     
     fp = fopen(path, "w");
-     if (fp == NULL) {
-        perror("fopen");
+     if (!fp) {
+        printf("Failed Creating File\n");
+        fclose(fp);
         return false;
     }
     fclose(fp);
@@ -76,7 +78,8 @@ bool fileWrite(ziv *pointer){
     
     fp = fopen(path, "a");
      if(!fp){
-        perror("fopen");
+        printf("Failed Writing File\n");
+        fclose(fp);
         return FALSE;
     }
     fprintf(fp, "%s\n", content);
@@ -104,7 +107,7 @@ bool fileWriteAdvanced(ziv *pointer){
     FILE *fp;
     fp = fopen(path, "a");
     if(!fp){
-        perror("fopen");
+        printf("ZWRITE: Failed Getting Handle To File\n");
         fclose(fp);
         return FALSE;
     }
