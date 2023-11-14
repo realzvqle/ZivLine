@@ -12,7 +12,6 @@
 
 #define BUFSIZE 4096
 #define VER 0.3
-#define clrscr() system("cls");
 
 
 
@@ -61,3 +60,4 @@ void printDir(ziv *pointer);
 void oops(ziv *pointer);
 char* getDir();
 bool startFileReaderOnShell(ziv *pointer);
+void clrscr();
