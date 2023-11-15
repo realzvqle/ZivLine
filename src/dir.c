@@ -199,6 +199,9 @@ START:
     if(!pointer->path && !pointer->args){
         return TRUE;
     }
+    if(pointer->args){
+        return TRUE;
+    }
     pointer->path = (char*)malloc(strlen(temp) + 1);
     strcpy(pointer->path, temp);
     free(temp);
