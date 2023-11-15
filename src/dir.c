@@ -150,7 +150,7 @@ bool listFiles(ziv *pointer){
     }
      
     int i = 0;
-    if(!pointer->path && pointer->args){
+    if(pointer->args){
         path = (char*)malloc(strlen(pointer->args) + 3);
         strcpy(path, pointer->args);
         strcat(path, "\\");
