@@ -73,7 +73,7 @@ int cmdExecute(int index, ziv *pointer){
             oops(pointer);
             break;
         default:
-            printf("%s Is The Incorrect\n", pointer->cmds);
+            printf("%s Is Wrong Command! (!)\n", pointer->cmds);
             break;
     }
     return index;
