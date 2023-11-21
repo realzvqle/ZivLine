@@ -37,7 +37,6 @@ void newMakeDirectory(ziv* pointer) {
         printf("Successfully Made %s\n", cPath);
     }
 
-    // Free allocated memory
     free(cPath);
     free(temp);
 }
@@ -76,7 +75,6 @@ void newDeleteDirectory(ziv* pointer) {
         printf("Successfully Deleted %s\n", cPath);
     }
 
-    // Free allocated memory
     free(cPath);
     free(temp);
 }
