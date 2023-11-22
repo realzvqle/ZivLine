@@ -3,6 +3,7 @@
 bool startCLI(cli *clipointer){
     
     ziv pointer;
+    
     bool loop = true;
     printf("ZivLine [Version %0.1f]\n(c) zvqle, All rights reserved\n\n", VER);
     while(loop == true){

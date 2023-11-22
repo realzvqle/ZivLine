@@ -11,7 +11,13 @@
 
 
 #define BUFSIZE 4096
-#define VER 0.3
+#define VER 0.4
+
+
+
+#define SHELL 7179
+#define SCRIPT 8110
+#define RUNZLS 1919
 
 
 
@@ -61,3 +67,5 @@ void oops(ziv *pointer);
 char* getDir();
 bool startFileReaderOnShell(ziv *pointer);
 void clrscr();
+void KillProcess(ziv *pointer);
+void GetPid(ziv *pointer);

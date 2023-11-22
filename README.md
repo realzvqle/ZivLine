@@ -156,12 +156,30 @@ Syntax: makedir *dir
 Example: ``makedir stuff`` <- makes a stuff directory
 
 # DELDIR
-Makes A Directory
+Deletes A Directory
 
-Syntax: makedir *dir
+Syntax: deldir *dir
 
 
-Example: ``deldir stuff`` <- delets the directory
+Example: ``deldir stuff`` <- deletes the directory
+
+# KILL
+Kills a process through the processID
+
+Syntax: kill *pid
+
+
+Example: ``kill 18189`` <- Kills The Process With The PID of 18189
+
+# GETPID
+Gets The PID of a Window (NOT FILENAME!!!!!)
+
+Syntax: getpid *windowname
+
+
+Example: ``getpid Untitled - Notepad`` <- Gets the pid of a new notepad window
+
+
 
 
 # EXIT

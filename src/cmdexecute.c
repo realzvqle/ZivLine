@@ -72,6 +72,14 @@ int cmdExecute(int index, ziv *pointer){
         case 22:
             oops(pointer);
             break;
+        case 23:
+            KillProcess(pointer);
+            break;
+        case 24:
+            GetPid(pointer);
+            break;
+        case 25:
+            break;
         default:
             printf("%s Is Wrong Command! (!)\n", pointer->cmds);
             break;

@@ -95,6 +95,7 @@ bool fileWriteAdvanced(ziv *pointer){
     char path[BUFSIZE] = "";
     if(!pointer->path) strcpy(path, pointer->args);
     else{
+        printf("huh?\n");
         Sleep(500);
         strcpy(path, pointer->path);
         strcat(path, "\\");
@@ -104,6 +105,7 @@ bool fileWriteAdvanced(ziv *pointer){
     char buffer[BUFSIZE];
     bool loop = true;
     int line = 0;
+    printf("Made it?");
     FILE *fp;
     fp = fopen(path, "a");
     if(!fp){
