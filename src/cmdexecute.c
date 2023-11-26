@@ -80,6 +80,12 @@ int cmdExecute(int index, ziv *pointer){
             break;
         case 25:
             break;
+        case 26:
+            copyFile(pointer);
+            break;
+        case 27:
+            removeFile(pointer);
+            break;
         default:
             printf("%s Is Wrong Command! (!)\n", pointer->cmds);
             break;

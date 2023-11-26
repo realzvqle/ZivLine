@@ -47,6 +47,8 @@ Example: ``start user my_program.exe -d`` <- Starts my_program.exe with the -d p
 
 ``start admin my_program.exe -d`` <- Starts my_program.exe with the -d parameter in admin mode
 
+You Can Also Start A Program using ./
+
 
 
 # PAUSE
@@ -179,6 +181,25 @@ Syntax: getpid *windowname
 
 Example: ``getpid Untitled - Notepad`` <- Gets the pid of a new notepad window
 
+
+
+# DELETE
+Deletes The File
+
+Syntax: delete *filename
+
+
+Example: ``delete test.txt`` <- Deletes test.txt
+
+
+
+# COPY
+Copys The File to another file
+
+Syntax: copy *filename1 *filename2
+
+
+Example: ``copy test.txt anothertest.txt`` <- Copy test.txt anothertest.txt
 
 
 

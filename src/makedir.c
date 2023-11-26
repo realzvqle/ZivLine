@@ -32,7 +32,7 @@ void newMakeDirectory(ziv* pointer) {
     int status = _mkdir(cPath);
 
     if (status != 0) {
-        printf("Failed Making Directory: ");
+        perror("Failed Making Directory: ");
     } else {
         printf("Successfully Made %s\n", cPath);
     }
@@ -70,7 +70,7 @@ void newDeleteDirectory(ziv* pointer) {
     int status = _rmdir(cPath);
 
     if (status != 0) {
-        printf("Failed Deleting Directory: ");
+        perror("Failed Deleting Directory: ");
     } else {
         printf("Successfully Deleted %s\n", cPath);
     }

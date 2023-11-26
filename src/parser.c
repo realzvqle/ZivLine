@@ -6,3 +6,4 @@ char* cmdParser(char buffer[], ziv *pointer){
     pointer->args = strtok(NULL, "\n");
     return pointer->cmds, pointer->args;
 }
+

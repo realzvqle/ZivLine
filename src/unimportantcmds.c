@@ -23,6 +23,8 @@ void help(){
     printf("DELDIR: deldir [dir] - deletes the directory\n");
     printf("GETPID: getpid [Window Name], Gets The Pid Of The Process\n");
     printf("KILL: kill [pid], kills the process when supplied the processID\n");
+    printf("COPY: copy [filename1] [filename2], Copy First File To Second File\n");
+    printf("DELETE: delete [filename], Deletes The File\n");
     printf("\nTo See More Information, Run The Commands Without Any Arguments\n");
 }
 

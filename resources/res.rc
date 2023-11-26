@@ -1,1 +1,28 @@
 1 ICON "icon.ico"
+
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName",      "zvqle"
+            VALUE "FileDescription",  "A Shell For Microsoft Windows"
+            VALUE "FileVersion",      "0, 0, 0, 5"
+            VALUE "InternalName",     "zvqle"
+            VALUE "LegalCopyright",   "Copyright 2023 zvqle. All rights reserved."
+            VALUE "OriginalFilename", "zivline.exe"
+            VALUE "ProductName",      "ZivLine"
+            VALUE "ProductVersion",   "0, 0, 0, 5"
+            VALUE "LegalTrademarks",  "zvqle"
+            VALUE "Comments",         "Docs At https://github.com/realzvqle/zivline/readme.md."
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END
+

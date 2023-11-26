@@ -105,11 +105,10 @@ bool fileWriteAdvanced(ziv *pointer){
     char buffer[BUFSIZE];
     bool loop = true;
     int line = 0;
-    printf("Made it?");
     FILE *fp;
     fp = fopen(path, "a");
     if(!fp){
-        printf("ZWRITE: Failed Getting Handle To File\n");
+        perror("ZWRITE\n");
         fclose(fp);
         return FALSE;
     }

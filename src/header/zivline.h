@@ -11,13 +11,8 @@
 
 
 #define BUFSIZE 4096
-#define VER 0.4
+#define VER 0.5
 
-
-
-#define SHELL 7179
-#define SCRIPT 8110
-#define RUNZLS 1919
 
 
 
@@ -37,6 +32,10 @@ typedef struct{
     char *cmds;
     char *path;
 } ziv;
+
+
+
+
 
 
 void cleanup(ziv *pointer);
@@ -69,3 +68,6 @@ bool startFileReaderOnShell(ziv *pointer);
 void clrscr();
 void KillProcess(ziv *pointer);
 void GetPid(ziv *pointer);
+void startExecute(ziv *pointer);
+void copyFile(ziv *pointer);
+BOOL removeFile(ziv *pointer);
