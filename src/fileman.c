@@ -8,6 +8,8 @@ void copyFile(ziv *pointer){
         printf("copy *firstfile *secondfile\n");
         return;
     }
+
+
     char* firstFile;
     char* secondFile;
 
@@ -20,11 +22,29 @@ void copyFile(ziv *pointer){
         return;
     }
 
+    char path[BUFSIZE] = "";
+    if(!pointer->path) strcpy(path, firstFile);
+    else{
+        Sleep(500);
+        strcpy(path, pointer->path);
+        strcat(path, "\\");
+        strcat(path, firstFile);
+    }
+
+    char secondPath[BUFSIZE] = "";
+    if(!pointer->path) strcpy(path, secondFile);
+    else{
+        Sleep(500);
+        strcpy(secondPath, pointer->path);
+        strcat(secondPath, "\\");
+        strcat(secondPath, secondFile);
+    }
+
     FILE* sourceFile, * destinationFile;
     char buffer[4096];
     size_t bytesRead;
 
-    sourceFile = fopen(firstFile, "rb");
+    sourceFile = fopen(path, "rb");
 
     if (sourceFile == NULL) {
         perror("Error opening source file");
@@ -32,7 +52,7 @@ void copyFile(ziv *pointer){
     }
 
     
-    destinationFile = fopen(secondFile, "wb");
+    destinationFile = fopen(secondPath, "wb");
 
     if (destinationFile == NULL) {
         perror("Error opening destination file");
@@ -57,7 +77,16 @@ BOOL removeFile(ziv *pointer){
         return FALSE;
     }
 
-    if (remove(pointer->args) == 0) {
+    char path[BUFSIZE] = "";
+    if(!pointer->path) strcpy(path, pointer->args);
+    else{
+        Sleep(500);
+        strcpy(path, pointer->path);
+        strcat(path, "\\");
+        strcat(path, pointer->args);
+    }
+
+    if (remove(path) == 0) {
         printf("File %s deleted successfully.\n", pointer->args);
     } else {
         perror("Error deleting file");

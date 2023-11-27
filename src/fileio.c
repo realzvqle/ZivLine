@@ -20,7 +20,7 @@ bool fileRead(ziv *pointer){
     char buffer[BUFSIZE];
     fp = fopen(path, "r");
     if(!fp){
-        printf("Failed Reading File\n");
+        perror("Failed Reading File\n");
         fclose(fp);
         return FALSE;
     }
@@ -49,7 +49,7 @@ bool fileCreate(ziv *pointer){
     
     fp = fopen(path, "w");
      if (!fp) {
-        printf("Failed Creating File\n");
+        perror("Failed Creating File\n");
         fclose(fp);
         return false;
     }
@@ -78,7 +78,7 @@ bool fileWrite(ziv *pointer){
     
     fp = fopen(path, "a");
      if(!fp){
-        printf("Failed Writing File\n");
+        perror("Failed Writing File\n");
         fclose(fp);
         return FALSE;
     }
