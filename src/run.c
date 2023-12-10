@@ -10,7 +10,7 @@ void startExecute(ziv* pointer) {
         
         char path[BUFSIZE] = "";
         
-        if (!pointer->path) {
+        if (strcmp(pointer->path, "EMPTYSTRING") == 0) {
             strcpy(path, cmd);
         } else {
             Sleep(500);

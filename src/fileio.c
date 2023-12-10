@@ -9,7 +9,7 @@ bool fileRead(ziv *pointer){
     }
     FILE *fp;
     char path[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, pointer->args);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, pointer->args);
     else{
         Sleep(500);
         strcpy(path, pointer->path);
@@ -39,7 +39,7 @@ bool fileCreate(ziv *pointer){
         return FALSE;
     }
     char path[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, pointer->args);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, pointer->args);
     else{
         strcpy(path, pointer->path);
         strcat(path, "\\");
@@ -67,7 +67,7 @@ bool fileWrite(ziv *pointer){
     char *filename = strtok(pointer->args, " \n");
     char *content = strtok(NULL, "\n");
     char path[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, filename);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, filename);
     else{
         strcpy(path, pointer->path);
         strcat(path, "\\");
@@ -93,7 +93,7 @@ bool fileWriteAdvanced(ziv *pointer){
     }
 
     char path[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, pointer->args);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, pointer->args);
     else{
         printf("huh?\n");
         Sleep(500);

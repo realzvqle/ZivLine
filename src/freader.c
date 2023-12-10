@@ -5,6 +5,8 @@
 
 bool startFileReader(freader *fpointer){
     ziv pointer;
+    pointer.path = (char*)malloc(BUFSIZE);
+    strcpy(pointer.path, "EMPTYSTRING");
     fpointer->fp = fopen(fpointer->fileName, "r");
     if(!fpointer->fp){
         printf("Failed Opening File\n");

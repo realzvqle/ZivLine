@@ -3,6 +3,8 @@
 bool startCLI(cli *clipointer){
     
     ziv pointer;
+    pointer.path = (char*)malloc(BUFSIZE);
+    strcpy(pointer.path, "EMPTYSTRING");
     
     bool loop = true;
     printf("ZivLine [Version %0.1f]\n(c) zvqle, All rights reserved\n\n", VER);

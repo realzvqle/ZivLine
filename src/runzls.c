@@ -10,7 +10,7 @@ bool startFileReaderOnShell(ziv *pointer){
     }
     FILE *fp;
     char path[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, pointer->args);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, pointer->args);
     else{
         Sleep(500);
         strcpy(path, pointer->path);

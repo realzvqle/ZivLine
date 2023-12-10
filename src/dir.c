@@ -13,7 +13,7 @@ bool isDirectoryValid(char* path){
 
 void printDir(ziv *pointer){
 
-    if(!pointer->path) goto CURDIR;
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) goto CURDIR;
     printf("Current Directory Is %s\n", pointer->path);
 
 
@@ -86,7 +86,7 @@ CHANGEPATH:
         return FALSE;
     }
     
-    if(!pointer->path);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0);
     else free(pointer->path);
     pointer->path = NULL;
     pointer->path = (char*)malloc(strlen(tempPath) + 1);
@@ -96,7 +96,7 @@ CHANGEPATH:
     
     return TRUE;
 ADDPATH:
-    if(!pointer->path){
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0){
         tempPath = (char*)malloc(strlen(getDir()) + 1);
         strcpy(tempPath, getDir());
     }
@@ -116,7 +116,7 @@ ADDPATH:
         free(tempPath);
         return FALSE;
     }
-    if(!pointer->path);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0);
     else free(pointer->path);
     pointer->path = NULL;
     pointer->path = (char*)malloc(strlen(tempPath) + 1);
@@ -130,7 +130,7 @@ bool listFiles(ziv *pointer){
     char* path = NULL;
     char* temp = NULL;
     int stat = 0;
-    if(!pointer->path && !pointer->args){
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0 && !pointer->args){
         TCHAR buffer[BUFSIZE];
         DWORD length = GetCurrentDirectory(BUFSIZE, buffer);
         path = (char*)malloc(strlen(buffer) + 1);
@@ -139,7 +139,7 @@ bool listFiles(ziv *pointer){
     }
     //char* path = "";
 
-    if(!pointer->args && pointer->path){
+    if(!pointer->args && strcmp(pointer->path, "EMPTYSTRING") != 0){
         stat = 1;
         temp = (char*)malloc(strlen(pointer->path) + 3);
         strcpy(temp, pointer->path);
@@ -196,7 +196,7 @@ START:
     if(stat == 1){
         return TRUE;
     }
-    if(!pointer->path && !pointer->args){
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0 && !pointer->args){
         return TRUE;
     }
     if(pointer->args){

@@ -17,7 +17,7 @@ void newMakeDirectory(ziv* pointer) {
     char* temp = NULL;
     char* cPath = NULL;
 
-    if (!pointer->path) {
+    if (strcmp(pointer->path, "EMPTYSTRING") == 0) {
         cPath = (char*)malloc(strlen(pointer->args) + 1);
         strcpy(cPath, pointer->args);
     } else {
@@ -55,7 +55,7 @@ void newDeleteDirectory(ziv* pointer) {
     char* temp = NULL;
     char* cPath = NULL;
 
-    if (!pointer->path) {
+    if (strcmp(pointer->path, "EMPTYSTRING") == 0) {
         cPath = (char*)malloc(strlen(pointer->args) + 1);
         strcpy(cPath, pointer->args);
     } else {

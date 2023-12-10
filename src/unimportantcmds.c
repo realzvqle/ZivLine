@@ -37,9 +37,7 @@ void pause(){
 }
 
 void cleanup(ziv *pointer){
-    if(!pointer->path) return;
-    else free(pointer->path);
-
+    free(pointer->path);
     return;
 }
 

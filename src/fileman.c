@@ -23,7 +23,7 @@ void copyFile(ziv *pointer){
     }
 
     char path[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, firstFile);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, firstFile);
     else{
         Sleep(500);
         strcpy(path, pointer->path);
@@ -32,7 +32,7 @@ void copyFile(ziv *pointer){
     }
 
     char secondPath[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, secondFile);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, secondFile);
     else{
         Sleep(500);
         strcpy(secondPath, pointer->path);
@@ -78,7 +78,7 @@ BOOL removeFile(ziv *pointer){
     }
 
     char path[BUFSIZE] = "";
-    if(!pointer->path) strcpy(path, pointer->args);
+    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, pointer->args);
     else{
         Sleep(500);
         strcpy(path, pointer->path);
