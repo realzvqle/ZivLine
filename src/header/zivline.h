@@ -11,7 +11,7 @@
 
 
 #define BUFSIZE 4096
-#define VER 0.5
+#define VER 0.6
 
 
 
@@ -71,3 +71,5 @@ void GetPid(ziv *pointer);
 void startExecute(ziv *pointer);
 void copyFile(ziv *pointer);
 BOOL removeFile(ziv *pointer);
+void editReg(ziv *pointer);
+bool CheckAdmin();

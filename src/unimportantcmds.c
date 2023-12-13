@@ -25,6 +25,7 @@ void help(){
     printf("KILL: kill [pid], kills the process when supplied the processID\n");
     printf("COPY: copy [filename1] [filename2], Copy First File To Second File\n");
     printf("DELETE: delete [filename], Deletes The File\n");
+    printf("REG: reg [dowhat] [hkey] [regpath] {valuename} (only for -w) {datatype} (only for -w)");
     printf("\nTo See More Information, Run The Commands Without Any Arguments\n");
 }
 
@@ -54,4 +55,14 @@ void oops(ziv *pointer){
     printf("Total 6 (delta 5), reused 0 (delta 0), pack-reused 0\n");
     return;
     
+}
+
+bool CheckAdmin() {
+    BOOL isAdmin;
+    SID_IDENTIFIER_AUTHORITY NTA = SECURITY_NT_AUTHORITY;
+    PSID AdminGroup;
+    AllocateAndInitializeSid(&NTA, 2, SECURITY_BUILTIN_DOMAIN_RID, DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0, 0, &AdminGroup);
+    CheckTokenMembership(NULL, AdminGroup, &isAdmin);
+    FreeSid(AdminGroup);
+    return isAdmin;
 }

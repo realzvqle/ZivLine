@@ -86,6 +86,9 @@ int cmdExecute(int index, ziv *pointer){
         case 27:
             removeFile(pointer);
             break;
+        case 28: 
+            editReg(pointer);
+            break;
         default:
             printf("%s Is Wrong Command! (!)\n", pointer->cmds);
             break;
