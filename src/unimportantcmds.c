@@ -21,11 +21,11 @@ void help(){
     printf("BCOLOR: bcolor [color] - changes background color to that specifc color code\n");
     printf("MAKEDIR: makedir [dir] - makes the directory\n");
     printf("DELDIR: deldir [dir] - deletes the directory\n");
-    printf("GETPID: getpid [Window Name], Gets The Pid Of The Process\n");
-    printf("KILL: kill [pid], kills the process when supplied the processID\n");
-    printf("COPY: copy [filename1] [filename2], Copy First File To Second File\n");
-    printf("DELETE: delete [filename], Deletes The File\n");
-    printf("REG: reg [dowhat] [hkey] [regpath] {valuename} (only for -w) {datatype} (only for -w)");
+    printf("GETPID: getpid [Window Name] - Gets The Pid Of The Process\n");
+    printf("KILL: kill [pid] - kills the process when supplied the processID\n");
+    printf("COPY: copy [filename1] [filename2] - Copy First File To Second File\n");
+    printf("DELETE: delete [filename] - Deletes The File\n");
+    printf("REG: reg [dowhat] [hkey] [regpath] {valuename} (only for -w) {datatype} (only for -w) - Edits the registry");
     printf("\nTo See More Information, Run The Commands Without Any Arguments\n");
 }
 
@@ -43,8 +43,8 @@ void cleanup(ziv *pointer){
 }
 
 void exitCleanup(int exitCode, ziv *pointer){
-    cleanup(pointer);
-    exit(exitCode);
+    pointer->exit = true;
+    printf("Exited With Exit Code %d\n", exitCode);
 }
 
 
@@ -52,7 +52,7 @@ void exitCleanup(int exitCode, ziv *pointer){
 
 
 void oops(ziv *pointer){
-    printf("Total 6 (delta 5), reused 0 (delta 0), pack-reused 0\n");
+    printf("Fuck You Exit\n");
     return;
     
 }

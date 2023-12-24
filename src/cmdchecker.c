@@ -4,7 +4,7 @@
 
 char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "pause", "read", 
 "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", 
-"makedir", "deldir", "zvqle", "kill", "getpid", "state", "copy", "delete", "reg"};
+"makedir", "deldir", "zvqle", "kill", "getpid", "state", "copy", "delete", "reg", "startshell"};
 
 
 

@@ -24,8 +24,9 @@ bool startFileReaderOnShell(ziv *pointer){
         printf("Failed Opening File\n");
         return false;
     }
-
+    secondPointer.exit = false;
     while(fgets(buffer, BUFSIZE, fp)){
+        if(secondPointer.exit) break;
         strtok(buffer, "\n");
         secondPointer.cmds, secondPointer.args = cmdParser(buffer, &secondPointer);
         cmdChecker(&secondPointer);

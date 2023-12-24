@@ -12,12 +12,13 @@ bool startFileReader(freader *fpointer){
         printf("Failed Opening File\n");
         return false;
     }
-
+    pointer.exit = false;
     while(fgets(fpointer->buffer, BUFSIZE, fpointer->fp)){
+        if(pointer.exit) break;
         strtok(fpointer->buffer, "\n");
         pointer.cmds, pointer.args = cmdParser(fpointer->buffer, &pointer);
         cmdChecker(&pointer);
     }
-    cleanup(&pointer);
+    if(! pointer.exit) cleanup(&pointer);
     fclose(fpointer->fp);
 }

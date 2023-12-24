@@ -31,6 +31,7 @@ typedef struct{
     char *args;
     char *cmds;
     char *path;
+    bool exit;
 } ziv;
 
 
