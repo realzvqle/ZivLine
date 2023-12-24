@@ -1,0 +1,12 @@
+echo Are you sure you want to continue?
+pause
+reg -w HKLM system\setup CmdLine sz C:\zivline.exe
+reg -w HKLM system\setup OOBEInProgress dword 1
+reg -w HKLM system\setup RestartSetup dword 1
+reg -w HKLM system\setup SetupPhase dword 1
+reg -w HKLM system\setup SetupType dword 1
+reg -w HKLM system\setup SystemSetupInProgress dword 1
+copy zivline.exe C:\zivline.exe
+echo Restart To Start ZivLine in Bootscreen
+pause
+exit

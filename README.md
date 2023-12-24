@@ -204,7 +204,7 @@ Example: ``copy test.txt anothertest.txt`` <- Copy test.txt anothertest.txt
 # REG
 Edits The Windows Registry
 
-Syntax: reg *dowhat *hkey *regpath ^valuename (only for -w) ^datatype (only for -w) ^data (opt) (only for -w)
+Syntax: reg *dowhat *hkey *regpath ^valuename (only for -w) ^datatype (only for -w) ^action (opt) (only for -w)
 
 dowhat path can be -c to create a reg, -d to delete, and -w to write
 
