@@ -207,17 +207,24 @@ Edits The Windows Registry
 Syntax: reg *dowhat *hkey *regpath ^valuename (only for -w) ^datatype (only for -w) ^data (opt) (only for -w)
 
 dowhat path can be -c to create a reg, -d to delete, and -w to write
+
 hkey can be HKCR, HKCU, HKLM, HKU, or HKCC
+
 path is the path to the registry key
 
 --------------------------------------------------------------------
-EXTRA -w ARGS
+EXTRA -w ARGS:
+
+
 valuename is the name of the value you're writing into
+
 datatype is the data type (duh), it can be dword, sz, and expand_sz.
 
 Examples
 for -c:  ``reg -c HKLM system\myapp`` <- Creates system\myapp registry key
+
 for -d:  ``reg -d HKLM system\myapp`` <- Deletes system\myapp registry key
+
 for -w:  ``reg -w HKLM system idk dword 12`` <- Writes a value in system named idk which is a dword and the value written is 12
 
 # STARTSHELL
