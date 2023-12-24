@@ -214,8 +214,6 @@ path is the path to the registry key
 EXTRA -w ARGS
 valuename is the name of the value you're writing into
 datatype is the data type (duh), it can be dword, sz, and expand_sz.
----------------------------------------------------------------------
-
 
 Examples
 for -c:  ``reg -c HKLM system\myapp`` <- Creates system\myapp registry key
