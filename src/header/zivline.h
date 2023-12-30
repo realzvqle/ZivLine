@@ -8,10 +8,11 @@
 #include <conio.h>
 #include <direct.h>
 #include <time.h>
+#include <signal.h>
 
 
 #define BUFSIZE 4096
-#define VER 0.6
+#define VER 0.7
 
 
 
@@ -31,6 +32,7 @@ typedef struct{
     char *args;
     char *cmds;
     char *path;
+    int current;
     bool exit;
 } ziv;
 
@@ -42,7 +44,7 @@ typedef struct{
 void cleanup(ziv *pointer);
 bool startCLI(cli *clipointer);
 bool startFileReader(freader *fpointer);
-int cmdExecute(int index, ziv *pointer);
+int WINAPI cmdExecute(int index, ziv *pointer);
 char* cmdParser(char buffer[], ziv *pointer);
 bool cmdChecker(ziv *pointer);
 char *toLowerCase(char *string);
@@ -74,3 +76,4 @@ void copyFile(ziv *pointer);
 BOOL removeFile(ziv *pointer);
 void editReg(ziv *pointer);
 bool CheckAdmin();
+BOOL StartProcessA(char* cmd, char* args);

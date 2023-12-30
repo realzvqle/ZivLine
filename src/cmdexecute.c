@@ -2,7 +2,7 @@
 
 
 
-int cmdExecute(int index, ziv *pointer){
+int WINAPI cmdExecute(int index, ziv *pointer){
     switch(index){
         case 0:
             printf("%s\n", pointer->args);

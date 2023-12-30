@@ -52,7 +52,8 @@ void exitCleanup(int exitCode, ziv *pointer){
 
 
 void oops(ziv *pointer){
-    printf("Fuck You Exit\n");
+    char* idk;
+    strcpy(idk, "hi");
     return;
     
 }
@@ -66,3 +67,7 @@ bool CheckAdmin() {
     FreeSid(AdminGroup);
     return isAdmin;
 }
+
+
+
+

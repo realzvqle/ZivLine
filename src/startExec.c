@@ -12,6 +12,26 @@ void StartProcess(ziv *pointer){
     }    
 }
 
+
+BOOL StartProcessA(char* cmd, char* args) {
+    char commandLine[MAX_PATH + MAX_PATH];
+    if(!args){
+        snprintf(commandLine, sizeof(commandLine), "%s", cmd);
+    }
+    else{
+        snprintf(commandLine, sizeof(commandLine), "%s %s", cmd, args);
+    }
+    STARTUPINFOA si = {0};
+    PROCESS_INFORMATION pi = {0};
+    si.cb = sizeof(STARTUPINFO);
+    if (!CreateProcessA(NULL, commandLine, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
+        return FALSE;
+    }
+    WaitForSingleObject(pi.hProcess, INFINITE);
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+}
+
 void startwithadmin(char* cmd, char* param, ziv *pointer) {
     //char* cmd = strtok(pointer->cmds, "./");
     HINSTANCE hResult = ShellExecuteA(NULL, "runas", cmd, param, NULL, SW_SHOW);
@@ -48,9 +68,9 @@ void startwithadmin(char* cmd, char* param, ziv *pointer) {
 
 void startwithoutadmin(char* cmd, char* param, ziv *pointer) {
     //char* cmd = strtok(pointer->cmds, "./");
-    HINSTANCE hResult = ShellExecuteA(NULL, "open", cmd, param, NULL, SW_SHOW);
+    BOOL result = StartProcessA(cmd, param);
     
-    if ((intptr_t)hResult <= 32 || (intptr_t)hResult == HINSTANCE_ERROR) {
+    if (!result) {
         printf("Checking Local Directory For %s...\n", cmd);
         
         char path[BUFSIZE] = "";
@@ -64,8 +84,8 @@ void startwithoutadmin(char* cmd, char* param, ziv *pointer) {
             strcat(path, cmd);
         }
 
-        HINSTANCE hResult2 = ShellExecuteA(NULL, "open", path, pointer->args, NULL, SW_SHOW);
-        if ((intptr_t)hResult2 <= 32 || (intptr_t)hResult2 == HINSTANCE_ERROR) {
+        BOOL result2 = StartProcessA(path, param);
+        if (!result2) {
             printf("Couldn't Run %s\n", cmd);
             return;
         }
@@ -92,7 +112,7 @@ void Start(ziv *pointer){
 
     if(strcmp(args, "admin") == 0){
         
-        startwithadmin(first, second, pointer);
+       startwithadmin(first, second, pointer);
     }
     else if(strcmp(args, "user") == 0){
         

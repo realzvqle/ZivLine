@@ -19,6 +19,8 @@ bool startFileReaderOnShell(ziv *pointer){
     }
     char buffer[BUFSIZE];
     ziv secondPointer;
+    secondPointer.path = (char*)malloc(sizeof(pointer->path) + 1);
+    strcpy(secondPointer.path, pointer->path);
     fp = fopen(path, "r");
     if(!fp){
         printf("Failed Opening File\n");
