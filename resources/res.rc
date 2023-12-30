@@ -9,13 +9,13 @@ BEGIN
         BLOCK "040904E4"
         BEGIN
             VALUE "CompanyName",      "zvqle"
-            VALUE "FileDescription",  "A Shell For Microsoft Windows"
-            VALUE "FileVersion",      "0, 0, 0, 5"
+            VALUE "FileDescription",  "Zivline - A Shell For Microsoft Windows"
+            VALUE "FileVersion",      "0, 0, 0, 7"
             VALUE "InternalName",     "zvqle"
-            VALUE "LegalCopyright",   "Copyright 2023 zvqle. All rights reserved."
+            VALUE "LegalCopyright",   "Copyright 2024 zvqle. All rights reserved."
             VALUE "OriginalFilename", "zivline.exe"
             VALUE "ProductName",      "ZivLine"
-            VALUE "ProductVersion",   "0, 0, 0, 5"
+            VALUE "ProductVersion",   "0, 0, 0, 7"
             VALUE "LegalTrademarks",  "zvqle"
             VALUE "Comments",         "Docs At https://github.com/realzvqle/zivline/readme.md."
         END
