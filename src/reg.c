@@ -170,15 +170,25 @@ bool writeReg(char* hkey, char* regpath) {
         RegCloseKey(closing);
         return false;
     }
-
-    LSTATUS result = RegSetKeyValueA(
+    // THIS HAS NO SUPPORT IN XP, But it works well
+    // LSTATUS result = RegSetKeyValueA(
+    //     closing,
+    //     NULL,
+    //     valuename,
+    //     convertRegType(dwtype),
+    //     lpdata,
+    //     cbdata
+    // );
+    LSTATUS result = RegSetValueExA(
         closing,
-        NULL,
         valuename,
+        0,
         convertRegType(dwtype),
         lpdata,
         cbdata
     );
+
+
 
     if (result != ERROR_SUCCESS) {
         printf("Cannot Set Key: %s\\%s, Error Code %d\n", hkey, keypath, result);
