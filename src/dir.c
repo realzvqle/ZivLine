@@ -202,7 +202,7 @@ START:
     if(pointer->args){
         return TRUE;
     }
-    pointer->path = (char*)malloc(4096);
+    pointer->path = (char*)malloc(sizeof(temp) + 20);
     strcpy(pointer->path, temp);
     free(temp);
     return TRUE;

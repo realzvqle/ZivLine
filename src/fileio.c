@@ -95,7 +95,6 @@ bool fileWriteAdvanced(ziv *pointer){
     char path[BUFSIZE] = "";
     if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, pointer->args);
     else{
-        printf("huh?\n");
         Sleep(500);
         strcpy(path, pointer->path);
         strcat(path, "\\");
