@@ -77,3 +77,4 @@ BOOL removeFile(ziv *pointer);
 void editReg(ziv *pointer);
 bool CheckAdmin();
 BOOL StartProcessA(char* cmd, char* args);
+void fallbackShell();

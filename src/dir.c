@@ -191,6 +191,8 @@ START:
         i++;
         if(i % 5 == 0) printf("\n");
     } while (FindNextFile(hFind, &fd) != 0);
+    signal(SIGSEGV, fallbackShell);
+
     printf("\n");
     FindClose(hFind);
     if(stat == 1){

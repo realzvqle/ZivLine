@@ -4,7 +4,7 @@
 
 char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "pause", "read", 
 "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", 
-"makedir", "deldir", "zvqle", "kill", "getpid", "state", "copy", "delete", "reg", "startshell"};
+"makedir", "deldir", "crash", "kill", "getpid", "state", "copy", "delete", "reg", "startshell"};
 
 void failureHandler(int signal){
     fprintf(stderr, "ZivLine Has Encountered An Error, Please Report This To zvqle!\n");
@@ -12,7 +12,7 @@ void failureHandler(int signal){
 }
 
 DWORD WINAPI createNewThreadForCommandProcessing(LPVOID param) {
-    signal(SIGSEGV, failureHandler);
+    signal(SIGSEGV, fallbackShell);
     ziv* pointer = (ziv*)param;
     cmdExecute(pointer->current, pointer);
     ExitThread(0);    

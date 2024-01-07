@@ -1,8 +1,10 @@
 #include "header/zivline.h"
 
+ziv pointer;
+
 bool startCLI(cli *clipointer){
     
-    ziv pointer;
+    
     pointer.path = (char*)malloc(BUFSIZE);
     strcpy(pointer.path, "EMPTYSTRING");
     pointer.exit = false;

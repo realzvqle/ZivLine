@@ -232,7 +232,27 @@ starts the shell
 
 Syntax: startshell
 
+
+# CRASH
+
+crashs zivline
+
+Syntax: crash
+
+
 # EXIT
 Exits Zivline.
 
 Syntax: exit
+
+
+
+#  ---- Recovery Commands ----
+
+These Are Commands For the Recovery Shell when zivline crashes
+
+- debugstate: prints the current state of zivline (The Log Has The Past Crash State Written)
+- resetstate: resets the state of zivline
+- signel: prints the OS signel
+- exit: returns to zivline
+- leave: leaves zivline
