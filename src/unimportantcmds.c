@@ -55,7 +55,6 @@ void oops(ziv *pointer){
     char* idk;
     strcpy(idk, "hi");
     return;
-    
 }
 
 BOOL CheckAdmin() {

@@ -43,7 +43,7 @@ void KillProcess(ziv *pointer){
         printf("Please Enter A Valid PID!\n");
         return;
     }
-    HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pidnum);
+    HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, pidnum);
     if(!hProcess){
         if(GetLastError() == 2){
             printf("Process Couldn't Be Found\n");
