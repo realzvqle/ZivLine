@@ -54,8 +54,12 @@ void exitCleanup(int exitCode, ziv *pointer){
 void oops(ziv *pointer){
     char* idk;
     strcpy(idk, "hi");
+    int *ptr = NULL;
+    *ptr = 42;
     return;
 }
+
+
 
 BOOL CheckAdmin() {
     BOOL isAdmin;

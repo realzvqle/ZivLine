@@ -26,7 +26,7 @@ BOOL createLog(char* fileName, struct _EXCEPTION_POINTERS* exceptionInfo){
     char state[BUFSIZE];
     char add[BUFSIZE];
     char code[BUFSIZE];
-    sprintf(title, "Failure -> Zivline Crash. OS signal -> %d", 11);
+    sprintf(title, "Failure -> Zivline Crash");
     sprintf(state, "LOG:\n - PATH - %s\n - COMMAND - %s\n - ARGUMENT - %s\n - FAILED COMMAND - %s\n - POSITION OF COMMAND - %d\n - ISEXIT - %d\n", 
     pointer.path, 
     pointer.cmds, 
@@ -66,10 +66,10 @@ void setupRecoveryMode(struct _EXCEPTION_POINTERS* exceptionInfo){
 }
 
 int recoveryProcessor(char* firstarg, char* secondarg){
-    firstarg = toLowerCase(firstarg);
     if(!firstarg){
         return -2;
     }
+    firstarg = toLowerCase(firstarg);
     if(strcmp(firstarg, "exit") == 0){
         ExitThread(0);
     }
@@ -85,7 +85,7 @@ int recoveryProcessor(char* firstarg, char* secondarg){
         printf("Fully Reset ZivLine State - To return to the shell, type 'exit'\n");
     }
     if(strcmp(firstarg, "help") == 0){
-        printf("Recovery Commands: \ndebugstate: prints the state of zivline\nresetstate: resets zivlines state to a stable state\nexit: exits recovery-mode and enters back to zivline\nsignel: Returns The Latest OS Signel \nleave: leaves zivline\n\n");
+        printf("Recovery Commands: \ndebugstate: prints the state of zivline\nresetstate: resets zivlines state to a stable state\nexit: exits recovery-mode and enters back to zivline\nleave: leaves zivline\n\n");
     }
     if(strcmp(firstarg, "leave") == 0){
         exit(0);
@@ -118,6 +118,7 @@ void fallbackShell(struct _EXCEPTION_POINTERS* exceptionInfo){
     printf("-------------------------------------------------------------------------------\n\n");
 
     while(1){
+    GOBACK:
         printf("--> ");
         fgets(buffer, BUFSIZE, stdin);
         strtok(buffer, "\n");
