@@ -6,13 +6,20 @@ char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "paus
 "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", 
 "makedir", "deldir", "crash", "kill", "getpid", "state", "copy", "delete", "reg", "startshell"};
 
-void failureHandler(int signal){
-    fprintf(stderr, "ZivLine Has Encountered An Error, Please Report This To zvqle!\n");
+LONG WINAPI failureHandler(struct _EXCEPTION_POINTERS* exceptionInfo){
+    fallbackShell(exceptionInfo);
+}
+
+
+void segchecker(int signel){
+    printf("Segmentation Fault\n");
+
     ExitThread(-1);
 }
 
 DWORD WINAPI createNewThreadForCommandProcessing(LPVOID param) {
-    signal(SIGSEGV, fallbackShell);
+    
+    SetUnhandledExceptionFilter(failureHandler);
     ziv* pointer = (ziv*)param;
     cmdExecute(pointer->current, pointer);
     ExitThread(0);    
@@ -20,7 +27,7 @@ DWORD WINAPI createNewThreadForCommandProcessing(LPVOID param) {
 }
 
 DWORD WINAPI createNewThreadForRunningExecutable(LPVOID param) {
-    signal(SIGSEGV, failureHandler);
+    signal(SIGSEGV, segchecker);
     ziv* pointer = (ziv*)param;
     startExecute(pointer);
     ExitThread(0);    
@@ -29,10 +36,10 @@ DWORD WINAPI createNewThreadForRunningExecutable(LPVOID param) {
 
 
 
-bool cmdChecker(ziv *pointer){
-    bool foundCommand = false;
+BOOL cmdChecker(ziv *pointer){
+    BOOL foundCommand = FALSE;
     int cmdSize = sizeof(cmdArray)/sizeof(cmdArray[0]);
-    if(!pointer->cmds) return false;
+    if(!pointer->cmds) return FALSE;
     if(pointer->cmds[0] == ',' || pointer->cmds[1] == ','){
         HANDLE hThread = CreateThread(NULL, 0, createNewThreadForRunningExecutable, (LPVOID)pointer, 0, NULL);
         WaitForSingleObject(hThread, INFINITE);
@@ -48,11 +55,11 @@ bool cmdChecker(ziv *pointer){
             pointer->current = i;
             HANDLE hThread = CreateThread(NULL, 0, createNewThreadForCommandProcessing, (LPVOID)pointer, 0, NULL);
             WaitForSingleObject(hThread, INFINITE);
-            return true;
+            return FALSE;
         }
     }
     printf("%s is the wrong command, please type \"help\" to see a list of cmds\nOr start an executable using ',,'\n", pointer->cmds);
-    return false;
+    return FALSE;
 }
 
 

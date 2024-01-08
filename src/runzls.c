@@ -3,7 +3,7 @@
 
 
 
-bool startFileReaderOnShell(ziv *pointer){
+BOOL startFileReaderOnShell(ziv *pointer){
     if(!pointer->args){
         printf("read: read *filename, opens a handle to filename and reads it\n");
         return FALSE;
@@ -24,9 +24,9 @@ bool startFileReaderOnShell(ziv *pointer){
     fp = fopen(path, "r");
     if(!fp){
         printf("Failed Opening File\n");
-        return false;
+        return FALSE;
     }
-    secondPointer.exit = false;
+    secondPointer.exit = FALSE;
     while(fgets(buffer, BUFSIZE, fp)){
         if(secondPointer.exit) break;
         strtok(buffer, "\n");

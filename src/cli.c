@@ -2,15 +2,15 @@
 
 ziv pointer;
 
-bool startCLI(cli *clipointer){
+BOOL startCLI(cli *clipointer){
     
     
     pointer.path = (char*)malloc(BUFSIZE);
     strcpy(pointer.path, "EMPTYSTRING");
-    pointer.exit = false;
-    bool loop = true;
+    pointer.exit = FALSE;
+    BOOL loop = TRUE;
     printf("\n");
-    while(loop == true && !pointer.exit){
+    while(loop == TRUE && !pointer.exit){
         if(pointer.exit) break;
         printf("-> ");
         fgets(clipointer->buffer, BUFSIZE, stdin);
@@ -19,5 +19,5 @@ bool startCLI(cli *clipointer){
         cmdChecker(&pointer);
     }
     cleanup(&pointer);
-    return true;
+    return TRUE;
 }

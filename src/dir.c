@@ -4,7 +4,7 @@
 
 
 
-bool isDirectoryValid(char* path){
+BOOL isDirectoryValid(char* path){
     DWORD check = GetFileAttributesA(path);
 
     if(check == INVALID_FILE_ATTRIBUTES) return FALSE;
@@ -50,7 +50,7 @@ char* currentDir(ziv *pointer){
 
 
 
-bool moveDirectory(ziv *pointer){
+BOOL moveDirectory(ziv *pointer){
     if(!pointer->args){
         printf("moveto: moveto *directory\\, Moves To that directory\n");
         return FALSE;
@@ -126,7 +126,7 @@ ADDPATH:
     return TRUE;
 }
 
-bool listFiles(ziv *pointer){
+BOOL listFiles(ziv *pointer){
     char* path = NULL;
     char* temp = NULL;
     int stat = 0;
@@ -191,7 +191,7 @@ START:
         i++;
         if(i % 5 == 0) printf("\n");
     } while (FindNextFile(hFind, &fd) != 0);
-    signal(SIGSEGV, fallbackShell);
+    //signal(SIGSEGV, fallbackShell);
 
     printf("\n");
     FindClose(hFind);

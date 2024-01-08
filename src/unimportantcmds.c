@@ -43,7 +43,7 @@ void cleanup(ziv *pointer){
 }
 
 void exitCleanup(int exitCode, ziv *pointer){
-    pointer->exit = true;
+    pointer->exit = TRUE;
     printf("Exited With Exit Code %d\n", exitCode);
 }
 
@@ -58,7 +58,7 @@ void oops(ziv *pointer){
     
 }
 
-bool CheckAdmin() {
+BOOL CheckAdmin() {
     BOOL isAdmin;
     SID_IDENTIFIER_AUTHORITY NTA = SECURITY_NT_AUTHORITY;
     PSID AdminGroup;

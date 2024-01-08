@@ -20,10 +20,12 @@ BOOL createMemoryDump(char* filename){
     return TRUE;
 }
 
-BOOL createLog(char* fileName){
+BOOL createLog(char* fileName, struct _EXCEPTION_POINTERS* exceptionInfo){
     FILE* fp;
     char title[BUFSIZE];
     char state[BUFSIZE];
+    char add[BUFSIZE];
+    char code[BUFSIZE];
     sprintf(title, "Failure -> Zivline Crash. OS signal -> %d", 11);
     sprintf(state, "LOG:\n - PATH - %s\n - COMMAND - %s\n - ARGUMENT - %s\n - FAILED COMMAND - %s\n - POSITION OF COMMAND - %d\n - ISEXIT - %d\n", 
     pointer.path, 
@@ -32,6 +34,9 @@ BOOL createLog(char* fileName){
     cmdArray[pointer.current], 
     pointer.current, 
     pointer.exit);
+    sprintf(add, "Exception Address in 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionAddress);
+    sprintf(code, "Exception Code in 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionCode);
+
     fp = fopen(fileName, "w");
     if(!fp){
         printf("Failed Writing Log\n");
@@ -39,15 +44,17 @@ BOOL createLog(char* fileName){
     }
     fprintf(fp, "%s\n\n", title);
     fprintf(fp, "%s", state);
+    fprintf(fp, "%s", add);
+    fprintf(fp, "%s", code);
     fclose(fp);
     return TRUE;
 
 }
 
-void setupRecoveryMode(){
+void setupRecoveryMode(struct _EXCEPTION_POINTERS* exceptionInfo){
     
     printf("Writing Log in C:\\ProgramData\\ZivlineLog.txt\n");
-    createLog("C:\\ProgramData\\ZivlineLog.txt");
+    createLog("C:\\ProgramData\\ZivlineLog.txt", exceptionInfo);
     printf("Wrote Log IN C:\\ProgramData\\ZivlineLog.txt\n");
 
     printf("Writing Dump in C:\\ProgramData\\ZivLineCrashDump.dmp\n");
@@ -58,19 +65,13 @@ void setupRecoveryMode(){
     
 }
 
-int recoveryProcessor(char* firstarg, char* secondarg, int signel){
+int recoveryProcessor(char* firstarg, char* secondarg){
     firstarg = toLowerCase(firstarg);
     if(!firstarg){
         return -2;
     }
     if(strcmp(firstarg, "exit") == 0){
         ExitThread(0);
-    }
-    if(strcmp(firstarg, "signel") == 0){
-        printf("--%d--\n", signel);
-    }
-    if(strcmp(firstarg, "exit") == 0){
-        printf("--%d--\n", signel);
     }
     if(strcmp(firstarg, "debugstate") == 0){
         printf("LOG:\n - PATH - %s\n - COMMAND - %s\n - ARGUMENT - %s\n - FAILED COMMAND - %s\n - POSITION OF COMMAND - %d\n - ISEXIT - %d\n", pointer.path, pointer.cmds, pointer.args, cmdArray[pointer.current], pointer.current, pointer.exit);
@@ -100,8 +101,11 @@ int recoveryProcessor(char* firstarg, char* secondarg, int signel){
 
 
 
-void fallbackShell(int signel){
-    setupRecoveryMode();
+void fallbackShell(struct _EXCEPTION_POINTERS* exceptionInfo){
+    printf("ZivLine Has Crashed\n");
+    printf("Exception Code is 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionCode);
+    printf("Exception Address in 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionAddress);
+    setupRecoveryMode(exceptionInfo);
     printf("STARTING RECOVERY MODE........\n");
     Sleep(2000);
     char buffer[BUFSIZE];
@@ -119,7 +123,7 @@ void fallbackShell(int signel){
         strtok(buffer, "\n");
         first = strtok(buffer, " \n");
         second = strtok(NULL, "\n");
-        int returne = recoveryProcessor(first, second, signel);
+        int returne = recoveryProcessor(first, second);
         if(returne == 98) return;
     }
 }

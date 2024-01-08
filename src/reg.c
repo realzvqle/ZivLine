@@ -20,7 +20,7 @@ DWORD convertRegType(char* dwtype) {
     
 }
 
-bool createReg(char* hkey, char* regpath){
+BOOL createReg(char* hkey, char* regpath){
     HKEY key;
     HKEY closing;
     if(strcmp(hkey, "HKLM") == 0){
@@ -53,7 +53,7 @@ bool createReg(char* hkey, char* regpath){
     if (checkResult == ERROR_SUCCESS) {
         printf("Registry key already exists: %s\\%s\n", hkey, regpath);
         RegCloseKey(closing);
-        return false;
+        return FALSE;
     }
 
     LSTATUS result = RegCreateKeyA(
@@ -63,18 +63,18 @@ bool createReg(char* hkey, char* regpath){
     );
     if(result == ERROR_SUCCESS){
         RegCloseKey(closing);
-        return true;
+        return TRUE;
     }
     else{
         RegCloseKey(closing);
         printf("Can't Create Key, Error Code %d\n", result);
-        return false;
+        return TRUE;
     }
 
     
 }
 
-bool deleteReg(char* hkey, char* regpath){
+BOOL deleteReg(char* hkey, char* regpath){
     HKEY key;
     HKEY closing;
     if(strcmp(hkey, "HKLM") == 0){
@@ -108,7 +108,7 @@ bool deleteReg(char* hkey, char* regpath){
     if (checkResult != ERROR_SUCCESS) {
         printf("Cannot Open Key: %s\\%s, Error Code %d\n", hkey, regpath, checkResult);
         RegCloseKey(closing);
-        return false;
+        return FALSE;
     }
     LSTATUS result = RegDeleteKeyA(
         key,
@@ -117,14 +117,14 @@ bool deleteReg(char* hkey, char* regpath){
     if (result != ERROR_SUCCESS) {
         printf("Cannot Delete Key: %s\\%s, Error Code %d\n", hkey, regpath, result);
         RegCloseKey(closing);
-        return false;
+        return FALSE;
     }
-    return true;
+    return TRUE;
 
     
 }
 
-bool writeReg(char* hkey, char* regpath) {
+BOOL writeReg(char* hkey, char* regpath) {
     HKEY key;
     HKEY closing;
     if (strcmp(hkey, "HKLM") == 0) {
@@ -139,7 +139,7 @@ bool writeReg(char* hkey, char* regpath) {
         key = HKEY_CURRENT_CONFIG;
     } else {
         printf("Invalid Registry Key, hkey can be HKCR, HKCU, HKLM, HKU, or HKCC\n");
-        return false;
+        return FALSE;
     }
     char* keypath = strtok(regpath, " ");
     char* valuename = strtok(NULL, " ");
@@ -168,7 +168,7 @@ bool writeReg(char* hkey, char* regpath) {
     if (checkResult != ERROR_SUCCESS) {
         printf("Cannot Open Key: %s\\%s, Error Code %d\n", hkey, keypath, checkResult);
         RegCloseKey(closing);
-        return false;
+        return FALSE;
     }
     // THIS HAS NO SUPPORT IN XP, But it works well
     // LSTATUS result = RegSetKeyValueA(
@@ -193,11 +193,11 @@ bool writeReg(char* hkey, char* regpath) {
     if (result != ERROR_SUCCESS) {
         printf("Cannot Set Key: %s\\%s, Error Code %d\n", hkey, keypath, result);
         RegCloseKey(closing);
-        return false;
+        return FALSE;
     }
 
     RegCloseKey(closing);
-    return true;
+    return TRUE;
 }
 
 

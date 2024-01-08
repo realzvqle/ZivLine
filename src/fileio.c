@@ -2,7 +2,7 @@
 
 
 
-bool fileRead(ziv *pointer){
+BOOL fileRead(ziv *pointer){
     if(!pointer->args){
         printf("read: read *filename, opens a handle to filename and reads it\n");
         return FALSE;
@@ -33,7 +33,7 @@ bool fileRead(ziv *pointer){
 }
 
 
-bool fileCreate(ziv *pointer){
+BOOL fileCreate(ziv *pointer){
     if(!pointer->args){
         printf("create: create *filename, Creates The File\n");
         return FALSE;
@@ -51,14 +51,14 @@ bool fileCreate(ziv *pointer){
      if (!fp) {
         perror("Failed Creating File\n");
         fclose(fp);
-        return false;
+        return FALSE;
     }
     fclose(fp);
 
 }
 
 
-bool fileWrite(ziv *pointer){
+BOOL fileWrite(ziv *pointer){
     if(!pointer->args){
         printf("write: write *filename *content, opens a handle to filename and writes content to it\n");
         return FALSE;
@@ -86,7 +86,7 @@ bool fileWrite(ziv *pointer){
     fclose(fp);
 }
 
-bool fileWriteAdvanced(ziv *pointer){
+BOOL fileWriteAdvanced(ziv *pointer){
     if(!pointer->args){
         printf("Zwrite: zwrite *filename, opens a handle to filename and edits it\n");
         return FALSE;
@@ -102,7 +102,7 @@ bool fileWriteAdvanced(ziv *pointer){
     }
 
     char buffer[BUFSIZE];
-    bool loop = true;
+    BOOL loop = TRUE;
     int line = 0;
     FILE *fp;
     fp = fopen(path, "a");
