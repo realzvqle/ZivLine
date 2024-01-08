@@ -14,9 +14,6 @@
 #define VER 0.7
 
 
-
-
-
 typedef struct{
     char buffer[BUFSIZE];
     char *fileName;
@@ -34,10 +31,6 @@ typedef struct{
     int current;
     BOOL exit;
 } ziv;
-
-
-
-
 
 
 void cleanup(ziv *pointer);
@@ -77,3 +70,4 @@ void editReg(ziv *pointer);
 BOOL CheckAdmin();
 BOOL StartProcessA(char* cmd, char* args);
 void fallbackShell(struct _EXCEPTION_POINTERS* exceptionInfo);
+BOOL startShell(cli *clipointer);

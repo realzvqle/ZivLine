@@ -91,7 +91,7 @@ int WINAPI cmdExecute(int index, ziv *pointer){
             break;
         case 29:
             cli clipointer;
-            startCLI(&clipointer);
+            startShell(&clipointer);
             break;
         default:
             printf("%s Is Wrong Command! (!)\n", pointer->cmds);
