@@ -6,18 +6,18 @@ DWORD convertRegType(char* dwtype) {
     dwtype = toLowerCase(dwtype);
     if (strcmp(dwtype, "dword") == 0) {
         return REG_DWORD;
-    } 
+    }
     else if (strcmp(dwtype, "sz") == 0) {
         return REG_SZ;
-    } 
+    }
     else if (strcmp(dwtype, "expand_sz") == 0) {
         return REG_EXPAND_SZ;
-    } 
+    }
     else{
         printf("Type Can be a dword, sz, or expand_sz\nDEFAULT: setting as sz...\n");
         return REG_SZ;
     }
-    
+
 }
 
 BOOL createReg(char* hkey, char* regpath){
@@ -57,7 +57,7 @@ BOOL createReg(char* hkey, char* regpath){
     }
 
     LSTATUS result = RegCreateKeyA(
-        key, 
+        key,
         regpath,
         &closing
     );
@@ -71,7 +71,7 @@ BOOL createReg(char* hkey, char* regpath){
         return TRUE;
     }
 
-    
+
 }
 
 BOOL deleteReg(char* hkey, char* regpath){
@@ -121,7 +121,7 @@ BOOL deleteReg(char* hkey, char* regpath){
     }
     return TRUE;
 
-    
+
 }
 
 BOOL writeReg(char* hkey, char* regpath) {
@@ -247,4 +247,3 @@ void editReg(ziv *pointer){
         return;
     }
 }
-
