@@ -7,3 +7,8 @@ test.zls
 test/
 zivline.make
 obj/
+zivline.sln
+zivline.vcxproj
+zivline.vcxproj.filters
+zivline.vcxproj.user
+.vs/

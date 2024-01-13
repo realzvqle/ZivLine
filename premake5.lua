@@ -1,6 +1,7 @@
+-- premake5.lua
+
 workspace "zivline"
     configurations { "Release" }
-
 
     SRCDIR = "src"
     RESDIR = "resources"
@@ -16,10 +17,13 @@ workspace "zivline"
             links { "dbghelp" }
             optimize "On"
             postbuildcommands {
-                "$(TargetDir)zivline.exe"                
+                'echo Compiling resources...',
+                'windres ' .. RESDIR .. '/res.rc -O coff -o ' .. BUILD_DIR .. '/res.res',
+                BUILD_DIR .. '\\zivline.exe'
             }
 
         filter {}
+
 
         
 

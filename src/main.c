@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "header/zivline.h"
 
 
@@ -5,7 +6,7 @@
 int main(int argc, char *argv[]){
     if(!argv[1]){
         printf("----------------------------------\n");
-        printf("| Zivine [Version %0.1f]          |\n", VER);
+        printf("| ZivLine [Version %0.1f]          |\n", VER);
         printf("| (c) zvqle, All rights reserved |\n");
         printf("----------------------------------\n");
 
