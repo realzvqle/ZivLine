@@ -1,26 +1,20 @@
-# Directories
 BUILD_DIR := build
 SRC_DIR := src
 RES_DIR := resources
 
-# Files
 EXE := $(BUILD_DIR)/zivline.exe
-RES_OBJ := $(BUILD_DIR)/res.obj
+RES_OBJ := $(BUILD_DIR)/res.o
 
-# Compiler
 CC := gcc
 RC := windres
 
-# Compiler flags
 CFLAGS := -O1 -s
 LDFLAGS := -ldbghelp
 
-# List of source files
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
-OBJ_FILES := $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC_FILES))
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
 
 all: $(EXE)
-
 $(EXE): $(RES_OBJ) $(OBJ_FILES)
 	$(CC) $(OBJ_FILES) $(RES_OBJ) $(LDFLAGS) -o $(EXE)
 	$(EXE)
