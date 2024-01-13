@@ -16,7 +16,7 @@ workspace "zivline"
             links { "dbghelp" }
             optimize "On"
             postbuildcommands {
-                "$(TargetDir)zivline.exe"                -- Replace with the actual name of your executable
+                "$(TargetDir)zivline.exe"                
             }
 
         filter {}
