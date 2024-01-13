@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 -- premake5.lua
 
 workspace "zivline"
