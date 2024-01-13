@@ -1,6 +1,9 @@
+makefile
 zivline.exe
 build/
 test.txt 
 test.zls
 .vscode/
 test/
+zivline.make
+obj/
