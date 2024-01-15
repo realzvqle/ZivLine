@@ -73,10 +73,10 @@ int WINAPI cmdExecute(int index, ziv *pointer){
             oops(pointer);
             break;
         case 23:
-            KillProcess(pointer);
+            //KillProcess(pointer);
             break;
         case 24:
-            GetPid(pointer);
+            processConfigurer(pointer);
             break;
         case 25:
             break;

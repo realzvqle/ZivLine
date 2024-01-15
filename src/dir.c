@@ -4,7 +4,7 @@
 
 
 
-BOOL isDirectoryValid(char* path){
+static BOOL isDirectoryValid(char* path){
     DWORD check = GetFileAttributesA(path);
 
     if(check == INVALID_FILE_ATTRIBUTES) return FALSE;

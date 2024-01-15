@@ -1,7 +1,7 @@
 #include "header/zivline.h"
 
 
-void cls(HANDLE hConsole)
+static void cls(HANDLE hConsole)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     SMALL_RECT scrollRect;

@@ -4,20 +4,20 @@
 
 char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "pause", "read", 
 "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", 
-"makedir", "deldir", "crash", "kill", "getpid", "state", "copy", "delete", "reg", "startshell"};
+"makedir", "deldir", "crash", "kill", "process", "state", "copy", "delete", "reg", "startshell"};
 
-LONG WINAPI failureHandler(struct _EXCEPTION_POINTERS* exceptionInfo){
+static LONG WINAPI failureHandler(struct _EXCEPTION_POINTERS* exceptionInfo){
     fallbackShell(exceptionInfo);
 }
 
 
-void segchecker(int signel){
+static void segchecker(int signel){
     printf("Segmentation Fault\n");
 
     ExitThread(-1);
 }
 
-DWORD WINAPI createNewThreadForCommandProcessing(LPVOID param) {
+static DWORD WINAPI createNewThreadForCommandProcessing(LPVOID param) {
     
     SetUnhandledExceptionFilter(failureHandler);
     ziv* pointer = (ziv*)param;
@@ -26,7 +26,7 @@ DWORD WINAPI createNewThreadForCommandProcessing(LPVOID param) {
     return 0;
 }
 
-DWORD WINAPI createNewThreadForRunningExecutable(LPVOID param) {
+static DWORD WINAPI createNewThreadForRunningExecutable(LPVOID param) {
     signal(SIGSEGV, segchecker);
     ziv* pointer = (ziv*)param;
     startExecute(pointer);

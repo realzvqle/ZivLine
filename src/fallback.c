@@ -4,7 +4,7 @@
 extern ziv pointer;
 extern char *cmdArray[];
 
-BOOL createMemoryDump(char* filename){
+static BOOL createMemoryDump(char* filename){
     HANDLE pHandle = GetCurrentProcess();
     if(!pHandle){
         printf("Cannot Create Handle For Process\n");
@@ -20,7 +20,9 @@ BOOL createMemoryDump(char* filename){
     return TRUE;
 }
 
-BOOL createLog(char* fileName, struct _EXCEPTION_POINTERS* exceptionInfo){
+
+
+static BOOL createLog(char* fileName, struct _EXCEPTION_POINTERS* exceptionInfo){
     FILE* fp;
     char title[BUFSIZE];
     char state[BUFSIZE];
@@ -51,7 +53,7 @@ BOOL createLog(char* fileName, struct _EXCEPTION_POINTERS* exceptionInfo){
 
 }
 
-void setupRecoveryMode(struct _EXCEPTION_POINTERS* exceptionInfo){
+static void setupRecoveryMode(struct _EXCEPTION_POINTERS* exceptionInfo){
     
     printf("Writing Log in C:\\ProgramData\\ZivlineLog.txt\n");
     createLog("C:\\ProgramData\\ZivlineLog.txt", exceptionInfo);
@@ -65,7 +67,7 @@ void setupRecoveryMode(struct _EXCEPTION_POINTERS* exceptionInfo){
     
 }
 
-int recoveryProcessor(char* firstarg, char* secondarg){
+static int recoveryProcessor(char* firstarg, char* secondarg){
     if(!firstarg){
         return -2;
     }

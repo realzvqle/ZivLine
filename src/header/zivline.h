@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,10 +9,12 @@
 #include <direct.h>
 #include <time.h>
 #include <signal.h>
+#include <psapi.h>
+
 
 
 #define BUFSIZE 4096
-#define VER 0.7
+#define VER 0.8
 
 
 typedef struct{
@@ -61,8 +64,6 @@ void oops(ziv *pointer);
 char* getDir();
 BOOL startFileReaderOnShell(ziv *pointer);
 void clrscr();
-void KillProcess(ziv *pointer);
-void GetPid(ziv *pointer);
 void startExecute(ziv *pointer);
 void copyFile(ziv *pointer);
 BOOL removeFile(ziv *pointer);
@@ -71,3 +72,4 @@ BOOL CheckAdmin();
 BOOL StartProcessA(char* cmd, char* args);
 void fallbackShell(struct _EXCEPTION_POINTERS* exceptionInfo);
 BOOL startShell(cli *clipointer);
+void processConfigurer(ziv* pointer);

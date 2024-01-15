@@ -2,7 +2,7 @@
 
 
 
-DWORD convertRegType(char* dwtype) {
+static DWORD convertRegType(char* dwtype) {
     dwtype = toLowerCase(dwtype);
     if (strcmp(dwtype, "dword") == 0) {
         return REG_DWORD;
@@ -20,7 +20,7 @@ DWORD convertRegType(char* dwtype) {
 
 }
 
-BOOL createReg(char* hkey, char* regpath){
+static BOOL createReg(char* hkey, char* regpath){
     HKEY key;
     HKEY closing;
     if(strcmp(hkey, "HKLM") == 0){
@@ -74,7 +74,7 @@ BOOL createReg(char* hkey, char* regpath){
 
 }
 
-BOOL deleteReg(char* hkey, char* regpath){
+static BOOL deleteReg(char* hkey, char* regpath){
     HKEY key;
     HKEY closing;
     if(strcmp(hkey, "HKLM") == 0){
@@ -124,7 +124,7 @@ BOOL deleteReg(char* hkey, char* regpath){
 
 }
 
-BOOL writeReg(char* hkey, char* regpath) {
+static BOOL writeReg(char* hkey, char* regpath) {
     HKEY key;
     HKEY closing;
     if (strcmp(hkey, "HKLM") == 0) {
