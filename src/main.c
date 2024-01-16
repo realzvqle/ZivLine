@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "header/zivline.h"
 
+ziv pointer;
 
 
 int main(int argc, char *argv[]){

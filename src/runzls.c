@@ -1,26 +1,26 @@
 #include "header/zivline.h"
 
+extern ziv pointer;
 
 
-
-BOOL startFileReaderOnShell(ziv *pointer){
-    if(!pointer->args){
+BOOL startFileReaderOnShell(ziv *pointerPass){
+    if(!pointerPass->args){
         printf("read: read *filename, opens a handle to filename and reads it\n");
         return FALSE;
     }
     FILE *fp;
     char path[BUFSIZE] = "";
-    if(strcmp(pointer->path, "EMPTYSTRING") == 0) strcpy(path, pointer->args);
+    if(strcmp(pointerPass->path, "EMPTYSTRING") == 0) strcpy(path, pointerPass->args);
     else{
         Sleep(500);
-        strcpy(path, pointer->path);
+        strcpy(path, pointerPass->path);
         strcat(path, "\\");
-        strcat(path, pointer->args);
+        strcat(path, pointerPass->args);
     }
     char buffer[BUFSIZE];
     ziv secondPointer;
-    secondPointer.path = (char*)malloc(sizeof(pointer->path) + 1);
-    strcpy(secondPointer.path, pointer->path);
+    secondPointer.path = (char*)malloc(sizeof(pointerPass->path) + 1);
+    strcpy(secondPointer.path, pointerPass->path);
     fp = fopen(path, "r");
     if(!fp){
         printf("Failed Opening File\n");
@@ -31,7 +31,9 @@ BOOL startFileReaderOnShell(ziv *pointer){
         if(secondPointer.exit) break;
         strtok(buffer, "\n");
         secondPointer.cmds, secondPointer.args = cmdParser(buffer, &secondPointer);
+        pointer = secondPointer;
         cmdChecker(&secondPointer);
+
     }
     secondPointer.path = (char*)malloc(128);
     cleanup(&secondPointer);

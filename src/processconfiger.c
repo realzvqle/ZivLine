@@ -52,10 +52,6 @@ static void listProcesses(){
 }
 
 static void getPid(char* windowName){
-    if(!windowName){
-        printf("getpid [Window Name], Gets The Pid Of The Process\n(it isn't the name of the file its running from, but the actual window name)\n(example: to get the pid of wordpad, get the name of the window [ex: Document - WordPad] instead of wordpad.exe)\n");
-        return;
-    }
     DWORD pidnum;
     HWND hwnd = FindWindowA(NULL, windowName);
     if (hwnd == NULL) {
@@ -115,18 +111,31 @@ static void killProcess(DWORD pidnum){
     CloseHandle(hProcess);
 }
 
-
+static void printHelp(){
+    printf("PROCESS COMMAND:\n");
+    printf("process [command] (arguments (optional))\n");
+    printf("commands can be -k (to kill processes), -l (to list processes), or -g (to get a pid of a window)\n\n");
+    printf("----------------------------------------------------------------------------------------------------------\n");
+    printf("-- For -k, you have to pass the PID of the process you want to kill into the argument                   --\n");
+    printf("-- For -g, you have to pass the title-name of the window you want to get the pid from into the argument --\n");
+    printf("-- For -l, no arguments are needed                                                                      --\n");
+    printf("----------------------------------------------------------------------------------------------------------\n");
+}
 
 
 void processConfigurer(ziv* pointer){
     if(!pointer->args){ 
-        printf("No Arguments passed\n"); 
+        printf("type 'process -?' to get how to use the command\n"); 
         return;
     }
     char* type = strtok(pointer->args, " ");
     char* arg = strtok(NULL, "\n");
+    if(!type){
+        printf("type 'process -?' to get how to use the command\n"); 
+        return;
+    }
     if(!type[1]){
-        printf("No Argument Passed\n");
+        printf("type 'process -?' to get how to use the command\n"); 
         return;
     }
     switch(type[1]){
@@ -148,8 +157,11 @@ void processConfigurer(ziv* pointer){
             }
             getPid(arg);
             break;
+        case '?':
+            printHelp();
+            break;
         default:
-            printf("%c isn't a valid argument\n", type[1]);
+            printf("%c isn't a valid argument\ntype 'process -?' to get how to use the command\n", type[1]);
             break;
     }
 

@@ -1,6 +1,6 @@
 #include "header/zivline.h"
 
-ziv pointer;
+extern ziv pointer;
 
 BOOL startCLI(cli *clipointer){
     

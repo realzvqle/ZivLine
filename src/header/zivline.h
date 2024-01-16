@@ -1,4 +1,8 @@
+#ifndef ZIVLINE_H_INCLUDED
+#define ZIVLINE_H_INCLUDED
+
 #define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +14,6 @@
 #include <time.h>
 #include <signal.h>
 #include <psapi.h>
-
 
 
 #define BUFSIZE 4096
@@ -34,6 +37,7 @@ typedef struct{
     int current;
     BOOL exit;
 } ziv;
+
 
 
 void cleanup(ziv *pointer);
@@ -73,3 +77,7 @@ BOOL StartProcessA(char* cmd, char* args);
 void fallbackShell(struct _EXCEPTION_POINTERS* exceptionInfo);
 BOOL startShell(cli *clipointer);
 void processConfigurer(ziv* pointer);
+
+#endif
+
+

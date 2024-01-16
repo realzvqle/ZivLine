@@ -76,18 +76,18 @@ static int recoveryProcessor(char* firstarg, char* secondarg){
         ExitThread(0);
     }
     if(strcmp(firstarg, "debugstate") == 0){
-        printf("LOG:\n - PATH - %s\n - COMMAND - %s\n - ARGUMENT - %s\n - FAILED COMMAND - %s\n - POSITION OF COMMAND - %d\n - ISEXIT - %d\n", pointer.path, pointer.cmds, pointer.args, cmdArray[pointer.current], pointer.current, pointer.exit);
+        printf("LOG:\n - PATH - %s\n - COMMAND - %s\n - ARGUMENT - %s\n - POSITION OF COMMAND - %d\n - ISEXIT - %d\n", pointer.path, pointer.cmds, pointer.args, cmdArray[pointer.current], pointer.current, pointer.exit);
     }
-    if(strcmp(firstarg, "resetstate") == 0){
-        pointer.path = "EMPTYSTRING";
-        pointer.cmds = NULL;
-        pointer.args = NULL;
-        pointer.current = 0;
-        pointer.exit = FALSE;
-        printf("Fully Reset ZivLine State - To return to the shell, type 'exit'\n");
-    }
+    // if(strcmp(firstarg, "resetstate") == 0){
+    //     pointer.path = "EMPTYSTRING";
+    //     pointer.cmds = NULL;
+    //     pointer.args = NULL;
+    //     pointer.current = 0;
+    //     pointer.exit = FALSE;
+    //     printf("Fully Reset ZivLine State - To return to the shell, type 'exit'\n");
+    // }
     if(strcmp(firstarg, "help") == 0){
-        printf("Recovery Commands: \ndebugstate: prints the state of zivline\nresetstate: resets zivlines state to a stable state\nexit: exits recovery-mode and enters back to zivline\nleave: leaves zivline\n\n");
+        printf("Recovery Commands: \ndebugstate: prints the state of zivline\nexit: exits recovery-mode and enters back to zivline\nleave: leaves zivline\n\n");
     }
     if(strcmp(firstarg, "leave") == 0){
         exit(0);

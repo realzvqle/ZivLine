@@ -1,21 +1,25 @@
 #include "header/zivline.h"
 
 
+extern ziv pointer;
+
 BOOL startShell(cli *clipointer){
-    ziv pointer;
-    pointer.path = (char*)malloc(BUFSIZE);
-    strcpy(pointer.path, "EMPTYSTRING");
-    pointer.exit = FALSE;
+    ziv secondPointer;
+    secondPointer.path = (char*)malloc(BUFSIZE);
+    strcpy(secondPointer.path, "EMPTYSTRING");
+    secondPointer.exit = FALSE;
     BOOL loop = TRUE;
     printf("\n");
-    while(loop == TRUE && !pointer.exit){
-        if(pointer.exit) break;
+    while(loop == TRUE && !secondPointer.exit){
+        if(secondPointer.exit) break;
         printf("-> ");
         fgets(clipointer->buffer, BUFSIZE, stdin);
         strtok(clipointer->buffer, "\n");
-        pointer.cmds, pointer.args = cmdParser(clipointer->buffer, &pointer);
-        cmdChecker(&pointer);
+        secondPointer.cmds, secondPointer.args = cmdParser(clipointer->buffer, &secondPointer);
+        pointer = secondPointer;
+
+        cmdChecker(&secondPointer);
     }
-    cleanup(&pointer);
+    cleanup(&secondPointer);
     return TRUE;
 }
