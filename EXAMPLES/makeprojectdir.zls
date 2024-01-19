@@ -1,3 +1,5 @@
+- make C project for windows + mingw64
+
 echo Making Project
 makedir project
 makedir project/src

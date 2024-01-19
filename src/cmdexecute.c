@@ -70,10 +70,13 @@ int WINAPI cmdExecute(int index, ziv *pointer){
             newDeleteDirectory(pointer);
             break;
         case 22:
+            if(pointer->state != 9){
+                printf("This Is A Debug-Mode function, Please Enable Debug-Mode To Run This Command\n");
+                break;
+            }
             oops(pointer);
             break;
         case 23:
-            //KillProcess(pointer);
             break;
         case 24:
             processConfigurer(pointer);

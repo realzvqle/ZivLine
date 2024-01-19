@@ -4,7 +4,10 @@
 extern ziv pointer;
 
 BOOL startShell(cli *clipointer){
+
+
     ziv secondPointer;
+    secondPointer.state = 3;
     secondPointer.path = (char*)malloc(BUFSIZE);
     strcpy(secondPointer.path, "EMPTYSTRING");
     secondPointer.exit = FALSE;
@@ -20,6 +23,5 @@ BOOL startShell(cli *clipointer){
 
         cmdChecker(&secondPointer);
     }
-    cleanup(&secondPointer);
     return TRUE;
 }

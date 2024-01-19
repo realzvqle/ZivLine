@@ -4,7 +4,7 @@ extern ziv pointer;
 
 BOOL startCLI(cli *clipointer){
     
-    
+    pointer.state = 0;
     pointer.path = (char*)malloc(BUFSIZE);
     strcpy(pointer.path, "EMPTYSTRING");
     pointer.exit = FALSE;

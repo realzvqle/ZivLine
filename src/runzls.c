@@ -19,6 +19,7 @@ BOOL startFileReaderOnShell(ziv *pointerPass){
     }
     char buffer[BUFSIZE];
     ziv secondPointer;
+    secondPointer.state = 4;
     secondPointer.path = (char*)malloc(sizeof(pointerPass->path) + 1);
     strcpy(secondPointer.path, pointerPass->path);
     fp = fopen(path, "r");

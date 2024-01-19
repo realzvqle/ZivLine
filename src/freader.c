@@ -5,6 +5,7 @@ extern ziv pointer;
 
 BOOL startFileReader(freader *fpointer){
     ziv secondPointer;
+    secondPointer.state = 1;
     secondPointer.path = (char*)malloc(BUFSIZE);
     strcpy(secondPointer.path, "EMPTYSTRING");
     fpointer->fp = fopen(fpointer->fileName, "r");

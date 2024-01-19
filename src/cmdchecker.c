@@ -4,7 +4,7 @@
 
 char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "pause", "read", 
 "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", 
-"makedir", "deldir", "crash", "kill", "process", "state", "copy", "delete", "reg", "startshell"};
+"makedir", "deldir", "crash", "poweroff", "process", "state", "copy", "delete", "reg", "startshell"};
 
 static LONG WINAPI failureHandler(struct _EXCEPTION_POINTERS* exceptionInfo){
     fallbackShell(exceptionInfo);
@@ -12,8 +12,7 @@ static LONG WINAPI failureHandler(struct _EXCEPTION_POINTERS* exceptionInfo){
 
 
 static void segchecker(int signel){
-    printf("Segmentation Fault\n");
-
+    printf("Segmentation Fault in Externel Process\n");
     ExitThread(-1);
 }
 
@@ -40,12 +39,17 @@ BOOL cmdChecker(ziv *pointer){
     BOOL foundCommand = FALSE;
     int cmdSize = sizeof(cmdArray)/sizeof(cmdArray[0]);
     if(!pointer->cmds) return FALSE;
-    if(pointer->cmds[0] == ',' || pointer->cmds[1] == ','){
+    if(pointer->cmds[0] == 'z' && pointer->cmds[1] == 'v' && pointer->cmds[2] == 'a' && pointer->cmds[3] == 'p' && pointer->cmds[4] == 'i'){
+        zvapiFunctionParser(pointer);
+        return FALSE;
+    }
+    if(pointer->cmds[0] == ',' && pointer->cmds[1] == ','){
         HANDLE hThread = CreateThread(NULL, 0, createNewThreadForRunningExecutable, (LPVOID)pointer, 0, NULL);
         WaitForSingleObject(hThread, INFINITE);
         return FALSE;
     }
-    if(pointer->cmds[0] == '.' || pointer->cmds[1] == '/'){
+    
+    if(pointer->cmds[0] == '.' && pointer->cmds[1] == '/'){
         printf("To run an executable, you must do ',,' instead of ./\n");
         return FALSE;
     }

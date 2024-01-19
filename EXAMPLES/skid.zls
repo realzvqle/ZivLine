@@ -1,3 +1,5 @@
+- spamming notepad
+
 echo Will Start 100 NotePads!
 pause
 start user notepad
