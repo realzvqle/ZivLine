@@ -233,11 +233,25 @@ starts the shell
 Syntax: startshell
 
 
-# CRASH
+# POWEROFF
 
-crashs zivline
+powers off windows
 
-Syntax: crash
+Syntax: poweroff *type *isImmediate
+
+type can be -r to restart, -s to shutdown, -l to logoff (if isImmediate isn't 1).
+
+isImmediate can be 1 if true, else 0 or empty
+
+EXAMPLES: 
+    - `poweroff -r` <- restarts windows normally
+    - `poweroff -r 1` <- restarts windows forcefully
+
+# sleep
+
+makes zivline wait in milliseconds
+
+Syntax: sleep *milliseconds
 
 
 # EXIT
@@ -247,12 +261,12 @@ Syntax: exit
 
 
 
+
+
 #  ---- Recovery Commands ----
 
 These Are Commands For the Recovery Shell when zivline crashes
 
 - debugstate: prints the current state of zivline (The Log Has The Past Crash State Written)
-- resetstate: resets the state of zivline
-- signel: prints the OS signel
 - exit: returns to zivline
 - leave: leaves zivline
