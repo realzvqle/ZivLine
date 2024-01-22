@@ -3,6 +3,8 @@
 
 echo Are you sure you want to continue?
 pause
+echo MAKE SURE YOU ARE RUNNING THIS THROUGH ADMINSTRATOR
+pause
 reg -w HKLM system\setup CmdLine sz C:\zivline.exe
 reg -w HKLM system\setup OOBEInProgress dword 1
 reg -w HKLM system\setup RestartSetup dword 1
@@ -10,6 +12,20 @@ reg -w HKLM system\setup SetupPhase dword 1
 reg -w HKLM system\setup SetupType dword 1
 reg -w HKLM system\setup SystemSetupInProgress dword 1
 copy zivline.exe C:\zivline.exe
-echo Restart To Start ZivLine in Bootscreen
-pause
+create C:\Windows\System32\reset.zls
+write C:\Windows\System32\reset.zls echo Are You Sure You Want To Go Back?
+write C:\Windows\System32\reset.zls pause
+write C:\Windows\System32\reset.zls reg -d HKLM system\setup CmdLine
+write C:\Windows\System32\reset.zls reg -w HKLM system\setup OOBEInProgress dword 0
+write C:\Windows\System32\reset.zls reg -w HKLM system\setup RestartSetup dword 0
+write C:\Windows\System32\reset.zls reg -w HKLM system\setup SetupPhase dword 0
+write C:\Windows\System32\reset.zls reg -w HKLM system\setup SetupType dword 0
+write C:\Windows\System32\reset.zls reg -w HKLM system\setup SystemSetupInProgress dword 0
+write C:\Windows\System32\reset.zls sleep 3000
+write C:\Windows\System32\reset.zls poweroff -r 1
+echo Waiting For Registry To Save
+sleep 10000
+echo Restarting...
+sleep 3000
+poweroff -r
 exit

