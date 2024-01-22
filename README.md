@@ -174,8 +174,11 @@ Syntax: process *type *args
 type can be -k to kill a process, -l to list all process, or -g to to get a pid from a process
 
 EXAMPLES:
+
     - `process -k 1719` <- Kills the process with pid 1719
+
     - `process -l` <- Lists All Processes And PIDs
+    
     - `process -g Untitled - Notepad` <- Gets the pid of notepad window
 
 
@@ -240,7 +243,10 @@ type can be -r to restart, -s to shutdown, -l to logoff (if isImmediate isn't 1)
 isImmediate can be 1 if true, else 0 or empty
 
 EXAMPLES: 
+
     - `poweroff -r` <- restarts windows normally
+
+
     - `poweroff -r 1` <- restarts windows forcefully
 
 # sleep
