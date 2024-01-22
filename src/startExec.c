@@ -7,7 +7,7 @@ void StartProcess(ziv *pointer){
     si.cb = sizeof(STARTUPINFO);
 
     if(!CreateProcessA(pointer->args,NULL,NULL,NULL,FALSE,0,NULL,NULL,&si,&pi)){
-        printf("Failed Creating Process, Error: %d\n", GetLastError());
+        printf("Failed Creating Process, Error: %lu\n", (DWORD)GetLastError());
         return;
     }    
 }
@@ -30,6 +30,8 @@ BOOL StartProcessA(char* cmd, char* args) {
     WaitForSingleObject(pi.hProcess, INFINITE);
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
+
+    return TRUE;
 }
 
 void startwithadmin(char* cmd, char* param, ziv *pointer) {

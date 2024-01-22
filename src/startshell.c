@@ -18,7 +18,7 @@ BOOL startShell(cli *clipointer){
         printf("-> ");
         fgets(clipointer->buffer, BUFSIZE, stdin);
         strtok(clipointer->buffer, "\n");
-        secondPointer.cmds, secondPointer.args = cmdParser(clipointer->buffer, &secondPointer);
+        /*secondPointer.cmds, secondPointer.args*/ cmdParser(clipointer->buffer, &secondPointer);
         pointer = secondPointer;
 
         cmdChecker(&secondPointer);

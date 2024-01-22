@@ -55,6 +55,7 @@ BOOL fileCreate(ziv *pointer){
     }
     fclose(fp);
 
+    return TRUE;
 }
 
 
@@ -84,6 +85,8 @@ BOOL fileWrite(ziv *pointer){
     }
     fprintf(fp, "%s\n", content);
     fclose(fp);
+
+    return TRUE;
 }
 
 BOOL fileWriteAdvanced(ziv *pointer){

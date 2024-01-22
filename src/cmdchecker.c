@@ -8,6 +8,7 @@ char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "paus
 
 static LONG WINAPI failureHandler(struct _EXCEPTION_POINTERS* exceptionInfo){
     fallbackShell(exceptionInfo);
+    return 0;
 }
 
 

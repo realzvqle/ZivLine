@@ -36,8 +36,8 @@ static BOOL createLog(char* fileName, struct _EXCEPTION_POINTERS* exceptionInfo)
     cmdArray[pointer.current], 
     pointer.current, 
     pointer.exit);
-    sprintf(add, "Exception Address in 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionAddress);
-    sprintf(code, "Exception Code in 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionCode);
+    sprintf(add, "Exception Address in 0x%1llx\n", (unsigned long long)exceptionInfo->ExceptionRecord->ExceptionAddress);
+    sprintf(code, "Exception Code in 0x%1lx\n", (DWORD)exceptionInfo->ExceptionRecord->ExceptionCode);
 
     fp = fopen(fileName, "w");
     if(!fp){
@@ -76,7 +76,7 @@ static int recoveryProcessor(char* firstarg, char* secondarg){
         ExitThread(0);
     }
     if(strcmp(firstarg, "debugstate") == 0){
-        printf("LOG:\n - PATH - %s\n - COMMAND - %s\n - ARGUMENT - %s\n - POSITION OF COMMAND - %d\n - ISEXIT - %d\n", pointer.path, pointer.cmds, pointer.args, cmdArray[pointer.current], pointer.current, pointer.exit);
+        printf("LOG:\n - PATH - %s\n - COMMAND - %s\n - ARGUMENT - %s\n - POSITION OF COMMAND - %s\n - CURRENT - %d\n", pointer.path, pointer.cmds, pointer.args, cmdArray[pointer.current], pointer.current);
     }
     // if(strcmp(firstarg, "resetstate") == 0){
     //     pointer.path = "EMPTYSTRING";
@@ -105,8 +105,8 @@ static int recoveryProcessor(char* firstarg, char* secondarg){
 
 void fallbackShell(struct _EXCEPTION_POINTERS* exceptionInfo){
     printf("ZivLine Has Crashed\n");
-    printf("Exception Code is 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionCode);
-    printf("Exception Address in 0x%1x\n", exceptionInfo->ExceptionRecord->ExceptionAddress);
+    printf("Exception Code is 0x%1lx\n", exceptionInfo->ExceptionRecord->ExceptionCode);
+    printf("Exception Address in 0x%1llx\n", (unsigned long long)exceptionInfo->ExceptionRecord->ExceptionAddress);
     setupRecoveryMode(exceptionInfo);
     printf("STARTING RECOVERY MODE........\n");
     Sleep(2000);

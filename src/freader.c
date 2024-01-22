@@ -18,10 +18,12 @@ BOOL startFileReader(freader *fpointer){
         pointer = secondPointer;
         if(secondPointer.exit) break;
         strtok(fpointer->buffer, "\n");
-        secondPointer.cmds, secondPointer.args = cmdParser(fpointer->buffer, &secondPointer);
+        cmdParser(fpointer->buffer, &secondPointer);
         pointer = secondPointer;
         cmdChecker(&secondPointer);
     }
     if(!secondPointer.exit) cleanup(&secondPointer);
     fclose(fpointer->fp);
+
+    return TRUE;
 }

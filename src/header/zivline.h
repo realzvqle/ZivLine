@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -76,5 +78,6 @@ void fallbackShell(struct _EXCEPTION_POINTERS* exceptionInfo);
 BOOL startShell(cli *clipointer);
 void processConfigurer(ziv* pointer);
 void zvapiFunctionParser(ziv* pointer);
+void shutdownWindows(ziv *pointer);
 
 

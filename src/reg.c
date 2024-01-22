@@ -67,7 +67,7 @@ static BOOL createReg(char* hkey, char* regpath){
     }
     else{
         RegCloseKey(closing);
-        printf("Can't Create Key, Error Code %d\n", result);
+        printf("Can't Create Key, Error Code %lu\n", (DWORD)result);
         return TRUE;
     }
 
@@ -106,7 +106,7 @@ static BOOL deleteReg(char* hkey, char* regpath){
     );
 
     if (checkResult != ERROR_SUCCESS) {
-        printf("Cannot Open Key: %s\\%s, Error Code %d\n", hkey, regpath, checkResult);
+        printf("Cannot Open Key: %s\\%s, Error Code %ld\n", hkey, regpath, checkResult);
         RegCloseKey(closing);
         return FALSE;
     }
@@ -115,7 +115,7 @@ static BOOL deleteReg(char* hkey, char* regpath){
         regpath
     );
     if (result != ERROR_SUCCESS) {
-        printf("Cannot Delete Key: %s\\%s, Error Code %d\n", hkey, regpath, result);
+        printf("Cannot Delete Key: %s\\%s, Error Code %ld\n", hkey, regpath, result);
         RegCloseKey(closing);
         return FALSE;
     }
@@ -166,7 +166,7 @@ static BOOL writeReg(char* hkey, char* regpath) {
     );
 
     if (checkResult != ERROR_SUCCESS) {
-        printf("Cannot Open Key: %s\\%s, Error Code %d\n", hkey, keypath, checkResult);
+        printf("Cannot Open Key: %s\\%s, Error Code %ld\n", hkey, keypath, checkResult);
         RegCloseKey(closing);
         return FALSE;
     }
@@ -184,14 +184,14 @@ static BOOL writeReg(char* hkey, char* regpath) {
         valuename,
         0,
         convertRegType(dwtype),
-        lpdata,
+        (const BYTE *)lpdata,
         cbdata
     );
 
 
 
     if (result != ERROR_SUCCESS) {
-        printf("Cannot Set Key: %s\\%s, Error Code %d\n", hkey, keypath, result);
+        printf("Cannot Set Key: %s\\%s, Error Code %ld\n", hkey, keypath, result);
         RegCloseKey(closing);
         return FALSE;
     }
@@ -243,7 +243,7 @@ void editReg(ziv *pointer){
         return;
     }
     else{
-        printf("%s is an invalid argument, use either -c to create, -d to delete, or -w to write\n");
+        printf("%s is an invalid argument, use either -c to create, -d to delete, or -w to write\n", hkey);
         return;
     }
 }

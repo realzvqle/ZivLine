@@ -77,6 +77,7 @@ int WINAPI cmdExecute(int index, ziv *pointer){
             oops(pointer);
             break;
         case 23:
+            shutdownWindows(pointer);
             break;
         case 24:
             processConfigurer(pointer);

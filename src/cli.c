@@ -15,7 +15,7 @@ BOOL startCLI(cli *clipointer){
         printf("-> ");
         fgets(clipointer->buffer, BUFSIZE, stdin);
         strtok(clipointer->buffer, "\n");
-        pointer.cmds, pointer.args = cmdParser(clipointer->buffer, &pointer);
+        cmdParser(clipointer->buffer, &pointer);
         cmdChecker(&pointer);
     }
     cleanup(&pointer);

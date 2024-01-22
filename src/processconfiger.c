@@ -22,7 +22,7 @@ static void printProcess(DWORD processID, BOOL* isValid) {
     }
 
     if (_tcscmp(szProcessName, TEXT("<unknown>")) != 0) {
-        _tprintf(TEXT(" - (Process %s [PID: %u]) - \n"), szProcessName, processID);
+        _tprintf(TEXT(" - (Process %s [PID: %lu]) - \n"), szProcessName, processID);
         CloseHandle(hProcess);
         *isValid = TRUE;
         return;
@@ -74,7 +74,7 @@ static void getPid(char* windowName){
 
     GetWindowThreadProcessId(hwnd, &pidnum);
 
-    printf("ProcessID of %s Window Process is %d\n", windowName, pidnum);
+    printf("ProcessID of %s Window Process is %lu\n", windowName, pidnum);
 }
 
 
@@ -96,17 +96,17 @@ static void killProcess(DWORD pidnum){
         }
         else
         {
-            printf("Failed Getting Killing Process with PID of %d! Error Code: %d\n", pidnum, GetLastError());
+            printf("Failed Getting Killing Process with PID of %lu! Error Code: %lu\n", pidnum, GetLastError());
         }
         return;
     }
     BOOL sucsess = TerminateProcess(hProcess, -2);
 
     if(!sucsess){
-        printf("Failed Killing Process %d\n", pidnum);
+        printf("Failed Killing Process %lu\n", pidnum);
         return;
     }
-    printf("Killed Process %d!\n", pidnum);
+    printf("Killed Process %lu!\n", pidnum);
 
     CloseHandle(hProcess);
 }

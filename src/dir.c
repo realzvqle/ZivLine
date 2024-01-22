@@ -178,7 +178,7 @@ START:
             free(temp); 
             return FALSE;
         }
-        printf("Error Opening Directory, Error Code %d\n", GetLastError());
+        printf("Error Opening Directory, Error Code %lu\n", GetLastError());
         free(path); 
         free(temp); 
         return FALSE;

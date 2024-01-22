@@ -31,7 +31,7 @@ BOOL startFileReaderOnShell(ziv *pointerPass){
     while(fgets(buffer, BUFSIZE, fp)){
         if(secondPointer.exit) break;
         strtok(buffer, "\n");
-        secondPointer.cmds, secondPointer.args = cmdParser(buffer, &secondPointer);
+        cmdParser(buffer, &secondPointer);
         pointer = secondPointer;
         cmdChecker(&secondPointer);
 
@@ -39,4 +39,6 @@ BOOL startFileReaderOnShell(ziv *pointerPass){
     secondPointer.path = (char*)malloc(128);
     cleanup(&secondPointer);
     fclose(fp);
+
+    return TRUE;
 }
