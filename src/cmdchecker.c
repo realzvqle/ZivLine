@@ -4,7 +4,7 @@
 
 char *cmdArray[] = {"echo", "help", "-", "ver", "start", "execute", "clr", "pause", "read", 
 "write", "create", "exit", "zwrite", "run", "system", "moveto", "cd", "pd", "color", "bcolor", 
-"makedir", "deldir", "crash", "poweroff", "process", "state", "copy", "delete", "reg", "startshell"};
+"makedir", "deldir", "crash", "poweroff", "process", "state", "copy", "delete", "reg", "startshell", "sleep"};
 
 static LONG WINAPI failureHandler(struct _EXCEPTION_POINTERS* exceptionInfo){
     fallbackShell(exceptionInfo);

@@ -25,14 +25,16 @@ void help(){
     printf("KILL: kill [pid] - kills the process when supplied the processID\n");
     printf("COPY: copy [filename1] [filename2] - Copy First File To Second File\n");
     printf("DELETE: delete [filename] - Deletes The File\n");
-    printf("REG: reg [dowhat] [hkey] [regpath] {valuename} (only for -w) {datatype} (only for -w) - Edits the registry");
+    printf("REG: reg [dowhat] [hkey] [regpath] {valuename} (only for -w) {datatype} (only for -w) - Edits the registry\n");
+    printf("POWEROFF: poweroff [type] [isImmediate?] - Shuts Down Windows\n");
+    printf("SLEEP: sleep [millisecond] - Pauses ZivLine till the time ends\n");
     printf("\nTo See More Information, Run The Commands Without Any Arguments\n");
 }
 
 void pause(){
     char pause;
     printf("Press Any Key To Continue To ZivLine...\n");
-    pause = getch();
+    pause = _getch();
     printf("\n");
     return;
 }

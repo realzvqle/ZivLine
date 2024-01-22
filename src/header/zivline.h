@@ -12,6 +12,7 @@
 #include <signal.h>
 #include <psapi.h>
 #include <stdint.h>
+#include <winternl.h>
 
 
 
