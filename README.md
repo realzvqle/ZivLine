@@ -165,22 +165,18 @@ Syntax: deldir *dir
 
 Example: ``deldir stuff`` <- deletes the directory
 
-# KILL
-Kills a process through the processID
+# Process
 
-Syntax: kill *pid
+Edits Processes
 
+Syntax: process *type *args
 
-Example: ``kill 18189`` <- Kills The Process With The PID of 18189
+type can be -k to kill a process, -l to list all process, or -g to to get a pid from a process
 
-# GETPID
-Gets The PID of a Window (NOT FILENAME!!!!!)
-
-Syntax: getpid *windowname
-
-
-Example: ``getpid Untitled - Notepad`` <- Gets the pid of a new notepad window
-
+EXAMPLES:
+    - `process -k 1719` <- Kills the process with pid 1719
+    - `process -l` <- Lists All Processes And PIDs
+    - `process -g Untitled - Notepad` <- Gets the pid of notepad window
 
 
 # DELETE
