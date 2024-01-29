@@ -20,6 +20,8 @@
 #define VER 0.8
 
 
+
+
 typedef struct{
     char buffer[BUFSIZE];
     char *fileName;
@@ -80,5 +82,5 @@ BOOL startShell(cli *clipointer);
 void processConfigurer(ziv* pointer);
 void zvapiFunctionParser(ziv* pointer);
 void shutdownWindows(ziv *pointer);
-
+BOOL checkIfFileExists(char* fileName);
 

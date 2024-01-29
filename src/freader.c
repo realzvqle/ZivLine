@@ -10,7 +10,7 @@ BOOL startFileReader(freader *fpointer){
     strcpy(secondPointer.path, "EMPTYSTRING");
     fpointer->fp = fopen(fpointer->fileName, "r");
     if(!fpointer->fp){
-        printf("Failed Opening File\n");
+        perror("Failed Opening File: \n");
         return FALSE;
     }
     secondPointer.exit = FALSE;

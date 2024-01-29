@@ -1,4 +1,5 @@
 #include "header/zivline.h"
+#include <processthreadsapi.h>
 
 
 void help(){
@@ -47,7 +48,7 @@ void cleanup(ziv *pointer){
 
 void exitCleanup(int exitCode, ziv *pointer){
     pointer->exit = TRUE;
-    printf("Exited With Exit Code %d\n", exitCode);
+    //printf("Exited With Exit Code %d\n", exitCode);
 }
 
 

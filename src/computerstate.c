@@ -1,13 +1,5 @@
 #include "header/zivline.h"
 
-typedef enum _SHUTDOWN_ACTION
-{
-    ShutdownNoReboot,
-    ShutdownReboot,
-    ShutdownPowerOff,
-    ShutdownRebootForRecovery
-} SHUTDOWN_ACTION;
-
 typedef NTSTATUS(WINAPI *PNtShutdownSystem)(ULONG);
 
 

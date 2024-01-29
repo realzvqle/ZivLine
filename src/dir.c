@@ -59,6 +59,7 @@ BOOL moveDirectory(ziv *pointer){
 
     if(pointer->args[strlen(pointer->args) - 1] != '\\'){
         printf("missing \\ in the end\n");
+        
         return FALSE;
     }
     toLowerCase(pointer->args);
@@ -191,8 +192,6 @@ START:
         i++;
         if(i % 5 == 0) printf("\n");
     } while (FindNextFile(hFind, &fd) != 0);
-    //signal(SIGSEGV, fallbackShell);
-
     printf("\n");
     FindClose(hFind);
     if(stat == 1){

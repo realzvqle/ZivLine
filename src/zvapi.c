@@ -14,6 +14,15 @@ static void zvapiFunctionChecker(char* cmd, ziv* pointer){
         zvapiPrintf("%d\n", pointer->state);
         pointer->state = 9;
     }
+    if(strcmp(cmd, "version") == 0){
+        if(!pointer->args) return;
+        float statedVersion = strtof(pointer->args, NULL);
+        if(!statedVersion) return;
+        if(statedVersion > VER){ 
+            exitCleanup(0, pointer);
+            return;
+        }
+    }
 }
 
 
