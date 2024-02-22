@@ -1,4 +1,5 @@
 #include "header/zivline.h"
+#include <processenv.h>
 
 
 
@@ -94,7 +95,7 @@ CHANGEPATH:
     strcpy(pointer->path, tempPath);
     free(tempPath);
     printf("Sucsessfully Changed Directory To %s\n", pointer->path);
-    
+    SetCurrentDirectoryA(pointer->path);
     return TRUE;
 ADDPATH:
     if(strcmp(pointer->path, "EMPTYSTRING") == 0){
@@ -124,6 +125,7 @@ ADDPATH:
     strcpy(pointer->path, tempPath);
     free(tempPath);
     printf("Sucsessfully Changed Directory To %s\n", pointer->path);
+    SetCurrentDirectoryA(pointer->path);
     return TRUE;
 }
 

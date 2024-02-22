@@ -11,7 +11,6 @@ static void printProcess(DWORD processID, BOOL* isValid) {
         FALSE,
         processID
     );
-
     if (NULL != hProcess) {
         HMODULE hMods[BUFSIZE];
         DWORD cbNeeded;
@@ -29,7 +28,6 @@ static void printProcess(DWORD processID, BOOL* isValid) {
     }
     CloseHandle(hProcess);
     isValid = FALSE;
-
 }
 
 static void listProcesses(){

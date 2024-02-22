@@ -92,12 +92,12 @@ void shutdownWindows(ziv *pointer){
             break;
         case 's':
             if(!ExitWindowsEx(EWX_SHUTDOWN, SHTDN_REASON_MAJOR_SYSTEM)){
-                printf("Cannot Restart Windows, Error Code %lu\n", GetLastError());
+                printf("Cannot Shutdown Windows, Error Code %lu\n", GetLastError());
             }
             break;
         case 'l':
             if(!ExitWindowsEx(EWX_RESTARTAPPS, SHTDN_REASON_MAJOR_SYSTEM)){
-                printf("Cannot Restart Windows, Error Code %lu\n", GetLastError());
+                printf("Cannot LogOff, Error Code %lu\n", GetLastError());
             }
             break;
         case '?':
